@@ -14,7 +14,7 @@ Aufgabe 2.5
 Aufgabe 2.6
     SELECT * FROM log WHERE MONTH(log.Starttime)=2 AND YEAR(log.Starttime)=2020
 Aufgabe 2.7
-    SELECT Nachname, Vorname, COUNT(zuweisung.iButtonID) as 'Anzahl der Maschinen' FROM zuweisung, ibutton, user WHERE user.iButtonID=ibutton.iButtonID AND ibutton.iButtonID=zuweisung.iButtonID GROUP BY ibutton.iButtonID
+	SELECT Nachname, Vorname, COUNT(zuweisung.iButtonID) as 'Anzahl der Maschinen' FROM zuweisung, ibutton, user WHERE user.iButtonID=ibutton.iButtonID AND ibutton.iButtonID=zuweisung.iButtonID GROUP BY ibutton.iButtonID HAVING COUNT(zuweisung.iButtonID)>2
 Augabe 2.8
     
     

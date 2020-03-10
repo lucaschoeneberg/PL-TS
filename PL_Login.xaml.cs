@@ -20,7 +20,7 @@ namespace PL_TS
     /// </summary>
     public partial class PL_Login : Window
     {
-        Dbase daten = new Dbase("Projektlabor", "root", "");
+        Dbase data = new Dbase("Projektlabor", "root", "");
         public PL_Login()
         { 
             InitializeComponent();
@@ -29,11 +29,19 @@ namespace PL_TS
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
             List<string[]> Logindaten = new List<string[]>();
-            Logindaten = daten.CommandSelectAsListFrom("user"," WHERE E_Mail='"+tbx_username.Text+"' OR Benutzername='"+tbx_username.Text+"' AND Passwort='"+tbx_password.Password+"'");
-
-            if ((tbx_username.Text == Logindaten[3][0] || tbx_username.Text == Logindaten[5][0]) && Logindaten[6][0] == tbx_password.Password)
+            Logindaten = data.CommandSelectAsListFrom("user"," WHERE E_Mail='"+tbx_username.Text+"' OR Benutzername='"+tbx_username.Text+"' AND Passwort='"+tbx_password.Password+"'");
+            if(Logindaten.Count!=0)
             {
-                string t = "j";
+                if ((tbx_username.Text == Logindaten[0][3] || tbx_username.Text == Logindaten[0][5]) && Logindaten[0][6] == tbx_password.Password)
+                {
+                    Main openMain = new Main();
+                    this.Visibility = Visibility.Hidden;
+                    openMain.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ihre Eingaben sind falsch!");
             }
         }
     }
