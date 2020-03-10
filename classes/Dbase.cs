@@ -1,9 +1,18 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Windows.Forms;
-using System.Reflection;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using MySql.Data.MySqlClient;
 
 namespace WinDruckauftrag
 {
@@ -39,47 +48,9 @@ namespace WinDruckauftrag
             {
                 connection = null;
                 MessageBox.Show("Fehler beim Verbinden mit der Datenbank "
-                    + dbName + "\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    + dbName + "\n" + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 throw (ex);
             }
-        }
-
-        /// <summary>
-        /// gibt den Namen der Datenbank zurück.
-        /// </summary>
-        public string DatabaseName { get => dbName; }
-
-        /// <summary>
-        /// gibt die Namen der Datenspalten (evtl. mit ihren Datentypen als String-Liste zurück
-        /// </summary>
-        /// <param name="table">Name der Tabelle, dessen Spaltennamen ermittelt werden sollen</param>
-        /// <returns>Liste der Spaltennamen und evtl. ihrer Datentypen </returns>
-        public List<string> ColumnNames(string table)
-        {
-            string selectText = "SELECT * FROM " + table;
-            List<string> columnCaption = new List<string>();
-            try
-            {
-                connection.Open();
-                MySqlDataAdapter sqlDataAdap = new MySqlDataAdapter(selectText, connection);
-                DataTable dataTbl = new DataTable();
-                sqlDataAdap.Fill(dataTbl);
-                connection.Close();
-                // dataTbl Spaltennamen und Datentypen in eine String-Liste
-                var dataColumns = dataTbl.Columns;
-
-                for (int i = 0; i < dataColumns.Count; i++)
-                {
-                    //columnCaption.Add(string.Format("{0} ({1})", dataColumns[i].ColumnName, dataColumns[i].DataType));
-                    columnCaption.Add(dataColumns[i].ColumnName);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Fehler beim Lesen der Spaltennamen\n" + ex.Message, "Error",
-                   MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return columnCaption;
         }
 
         /// <summary>
@@ -115,7 +86,7 @@ namespace WinDruckauftrag
             {
                 connection.Close();
                 MessageBox.Show("Fehler bei 'Select' List\n" + ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
             return rowList;
         }
@@ -155,7 +126,7 @@ namespace WinDruckauftrag
             {
                 connection.Close();
                 MessageBox.Show("Fehler bei 'Select' List\n" + ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
             return rowList;
         }
@@ -196,64 +167,9 @@ namespace WinDruckauftrag
             {
                 connection.Close();
                 MessageBox.Show("Fehler bei 'Select' List\n" + ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
             return rowList;
-        }
-
-
-        /// <summary>
-        /// gibt die Daten einer Tabelle als DataTable zurück.
-        /// </summary>
-        /// <param name="table">Name der Tabelle, dessen Spalten ermittelt werden sollen</param>
-        /// <returns>DataTable der Tabelle</returns>
-        public DataTable CommandSelectAsDataTableFrom(string table)
-        {
-            DataTable dataTbl = new DataTable();
-            try
-            {
-                connection.Open();
-                command = connection.CreateCommand();
-                command.CommandText = "SELECT * FROM " + table;
-                MySqlDataAdapter sqlDataAdap = new MySqlDataAdapter(command.CommandText, connection);
-                sqlDataAdap.Fill(dataTbl);
-                connection.Close();
-            }
-            catch (Exception ex)
-            {
-                connection.Close();
-                MessageBox.Show("Fehler bei 'Select' Table\n" + ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return dataTbl;
-        }
-
-
-        /// <summary>
-        /// gibt die Daten einer Tabelle als DataTable zurück.
-        /// </summary>
-        /// <param name="table">Name der Tabelle, dessen Spalten ermittelt werden sollen</param>
-        /// <param name="condition"> Bedingung, Strings eingeschlossen in Hochkommata</param>
-        /// <returns>DataTable der Tabelle</returns>
-        public DataTable CommandSelectAsDataTableFrom(string table, string condition)
-        {
-            DataTable dataTbl = new DataTable();
-            try
-            {
-                connection.Open();
-                command = connection.CreateCommand();
-                command.CommandText = "SELECT * FROM " + table + " " + condition;
-                MySqlDataAdapter sqlDataAdap = new MySqlDataAdapter(command.CommandText, connection);
-                sqlDataAdap.Fill(dataTbl);
-                connection.Close();
-            }
-            catch (Exception ex)
-            {
-                connection.Close();
-                MessageBox.Show("Fehler bei 'Select' Table\n" + ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return dataTbl;
         }
 
 
@@ -277,7 +193,7 @@ namespace WinDruckauftrag
             catch (Exception ex)
             {
                 MessageBox.Show("Fehler bei 'Insert into'\n" + ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -303,7 +219,7 @@ namespace WinDruckauftrag
             catch (Exception ex)
             {
                 MessageBox.Show("Fehler bei 'Insert into'\n" + ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -327,7 +243,7 @@ namespace WinDruckauftrag
             catch (Exception ex)
             {
                 MessageBox.Show("Fehler bei 'Update'\n" + ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
