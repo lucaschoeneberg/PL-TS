@@ -14,7 +14,15 @@
                         <TextBlock Text="Maker" />
                     </StackPanel>
                 </TabItem.Header>
-                <DataGrid x:Name="dg_maker" Loaded="dg_maker_Loaded" Unloaded="dg_maker_Unloaded">
+                <DataGrid x:Name="dg_maker" Loaded="dg_maker_Loaded" Unloaded="dg_maker_Unloaded" Margin="0,34,0,0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Vorname"/>
+                        <DataGridTextColumn Header="Nachname"/>
+                        <DataGridTextColumn Header="E-Mail-Adresse"/>
+                        <DataGridCheckBoxColumn Header="Keymember"/>
+                        <DataGridTextColumn Header="Username"/>
+                        <DataGridTextColumn Header="iButton"/>
+                    </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
             <TabItem>
