@@ -18,11 +18,21 @@ namespace PL_TS
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Main : Window
     {
-        public MainWindow()
+        public Main()
         {
             InitializeComponent();
+        }
+
+        private void dg_maker_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void dg_maker_Unloaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
