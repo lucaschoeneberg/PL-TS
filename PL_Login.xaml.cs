@@ -44,5 +44,11 @@ namespace PL_TS
                 MessageBox.Show("Ihre Eingaben sind falsch!");
             }
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
     }
 }
