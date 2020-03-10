@@ -1,0 +1,20 @@
+Abfrage 2.1 Hinzufügen eines Makers:
+    INSERT INTO user (Vorname, Nachname, E_Mail, Keymember, iButtonID) VALUES ('test', 'tester', 'test@gmx.de', 0,'9E31E31900D3A100');
+Abfrage 2.1 Hinzufügen eines Keymembers:
+    INSERT INTO user (Vorname, Nachname, E_Mail, Keymember, iButtonID) VALUES ('tester', 'test', 'tester@gmx.de', 1,'EE2ADB190013A100');
+Abfrage 2.2 korrektur des Nachnames Zdanowicz
+    UPDATE user SET Nachname='Zdanowicz' WHERE UserID=2 AND Nachname='Zdanowitsch';
+Aufgabe 2.3
+    SELECT UserID, Vorname, Nachname, iButtonID FROM user
+Aufgabe 2.4
+    SELECT user.Vorname, user.Nachname, ibutton.iButtonID, maschine.MaschinenID, maschine.Bezeichnung FROM ibutton, user, zuweisung, maschine WHERE ibutton.iButtonID=user.iButtonID AND zuweisung.iButtonID=ibutton.iButtonID AND zuweisung.MaschinenID=maschine.MaschinenID AND Keymember=0 ORDER BY user.Nachname
+Aufgabe 2.5
+    INSERT INTO zuweisung(iButtonID, MaschinenID, Datum) VALUES('9E31E31900D3A100', 'pl4sbs' ,CURRENT_DATE)
+    DELETE FROM zuweisung WHERE iButtonID='A225E41900A6A100' AND MaschinenID='pl3drb'
+Aufgabe 2.6
+    SELECT * FROM log WHERE MONTH(log.Starttime)=2 AND YEAR(log.Starttime)=2020
+Aufgabe 2.7
+    SELECT Nachname, Vorname, COUNT(zuweisung.iButtonID) as 'Anzahl der Maschinen' FROM zuweisung, ibutton, user WHERE user.iButtonID=ibutton.iButtonID AND ibutton.iButtonID=zuweisung.iButtonID GROUP BY ibutton.iButtonID
+Augabe 2.8
+    
+    
