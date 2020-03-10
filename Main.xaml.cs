@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Serial.IButton;
+using MySql.Data.MySqlClient;
+using System.Configuration;
 
 namespace PL_TS
 {
@@ -21,7 +23,6 @@ namespace PL_TS
     /// </summary>
     public partial class Main : Window
     {
-        IButton readIButton = new IButton();
         public Main()
         {
             InitializeComponent();
@@ -29,6 +30,14 @@ namespace PL_TS
 
         private void dg_maker_Loaded(object sender, RoutedEventArgs e)
         {
+            string sql = "SELECT * FROM user;";
+
+            MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            MySqlCommand cmdSel = new MySqlCommand(sql, connection);
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmdSel);
+            DataSet ds = new DataSet();
+            adp.Fill(ds, "LoadDataBinding");
+            dg_maker.DataContext = ds;
         }
 
         private void dg_maker_Unloaded(object sender, RoutedEventArgs e)
@@ -37,7 +46,6 @@ namespace PL_TS
         }
         private void btn_add_maker_Click(object sender, RoutedEventArgs e)
         {
-
         }
     }
 }
