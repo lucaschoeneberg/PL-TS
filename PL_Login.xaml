@@ -25,16 +25,16 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Foreground="#707070"><Run Text="um ihr Dashboard zu sehen."/></TextBlock>
             <StackPanel Margin="0,15" Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" Foreground="#707070"/>
-                <TextBox materialDesign:HintAssist.Hint="Username" Width="250" Margin="5"/>
+                <TextBox x:Name="tbx_username" materialDesign:HintAssist.Hint="Username" Width="250" Margin="5"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="Key" VerticalAlignment="Center" Foreground="#707070"/>
-                <PasswordBox materialDesign:HintAssist.Hint="Passwort..." Width="250" Margin="5"/>
+                <PasswordBox x:Name="tbx_password" materialDesign:HintAssist.Hint="Passwort..." Width="250" Margin="5"/>
             </StackPanel>
             <Grid>
                 <CheckBox Content="Passwort merken" Margin="5,10" Foreground="#707070"/>
             </Grid>
-            <Button HorizontalAlignment="Center" Content="LOGIN" FontFamily="Impact" FontSize="18" Width="100" Background="#FF307CD6" BorderBrush="#FF307CD6"/>
+            <Button x:Name="btn_login" HorizontalAlignment="Center" Content="LOGIN" FontFamily="Impact" FontSize="18" Width="100" Background="#FF307CD6" BorderBrush="#FF307CD6" Click="btn_login_Click"/>
         </StackPanel>
         <StackPanel Margin="310,50,0,50">
             <TextBlock Text="PL ZK" Foreground="White" HorizontalAlignment="Center" FontSize="48" FontFamily="Champagne &amp; Limousines" FontWeight="Bold"/>
