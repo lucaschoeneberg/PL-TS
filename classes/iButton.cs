@@ -2,9 +2,9 @@
 using System.IO.Ports;
 using System.Windows;
 
-namespace WinZugriffssteuerung
+namespace Serial.IButton
 {
-    class iButton
+    class IButton
     {
         private SerialPort serport; //SerialPort-Object
 

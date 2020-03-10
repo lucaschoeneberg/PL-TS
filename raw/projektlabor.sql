@@ -102,7 +102,7 @@ CREATE TABLE `user` (
   `UserID` int(10) NOT NULL,
   `Vorname` varchar(20) COLLATE utf8mb4_german2_ci NOT NULL,
   `Nachname` varchar(30) COLLATE utf8mb4_german2_ci NOT NULL,
-  `E-Mail` varchar(40) COLLATE utf8mb4_german2_ci NOT NULL,
+  `E_Mail` varchar(40) COLLATE utf8mb4_german2_ci NOT NULL,
   `Keymember` tinyint(1) NOT NULL,
   `Benutzername` varchar(20) COLLATE utf8mb4_german2_ci DEFAULT NULL,
   `Passwort` varchar(30) COLLATE utf8mb4_german2_ci DEFAULT NULL,
@@ -113,7 +113,7 @@ CREATE TABLE `user` (
 -- Daten für Tabelle `user`
 --
 
-INSERT INTO `user` (`UserID`, `Vorname`, `Nachname`, `E-Mail`, `Keymember`, `Benutzername`, `Passwort`, `iButtonID`) VALUES
+INSERT INTO `user` (`UserID`, `Vorname`, `Nachname`, `E_Mail`, `Keymember`, `Benutzername`, `Passwort`, `iButtonID`) VALUES
 (1, 'Berthold', 'Sommer', 'b.sommer@berufskolleg-rheine.de', 1, 'somm', 'pass123', 'FF30E419006C4100'),
 (2, 'Damian', 'Zdanowitsch', 'd.zdanowicz@berufskolleg-rheine.de', 1, 'zdan', 'pass123', 'C08B241700574100'),
 (3, 'Luca', 'Schöneberg', 'ls@gmx.de', 0, NULL, NULL, 'A4D2E21900EAA100'),
