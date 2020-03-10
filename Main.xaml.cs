@@ -27,7 +27,6 @@ namespace PL_TS
 
         private void dg_maker_Loaded(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void dg_maker_Unloaded(object sender, RoutedEventArgs e)

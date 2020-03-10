@@ -28,7 +28,7 @@
             <TabItem>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Green" />
+                        <TextBlock Text="Key-Member" />
                     </StackPanel>
                 </TabItem.Header>
             </TabItem>
