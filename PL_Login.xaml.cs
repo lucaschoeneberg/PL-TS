@@ -23,5 +23,10 @@ namespace PL_TS
         {
             InitializeComponent();
         }
+
+        private void btn_login_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
