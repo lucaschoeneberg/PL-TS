@@ -3,11 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PL_TS"
         mc:Ignorable="d"
         Title="Projektlabor - Control" Height="450" Width="800">
     <Grid>
-        <TabControl>
+        <dragablz:TabablzControl>
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController />
+            </dragablz:TabablzControl.InterTabController>
             <TabItem>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -15,8 +20,7 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
-                    <Button x:Name="btn_add_maker" HorizontalAlignment="Center" Content="ADD" Height="25" Width="66" Background="#FF307CD6" BorderBrush="#FF307CD6" Click="btn_add_maker_Click" Margin="18,4,702,362"/>
-                    <DataGrid AutoGenerateColumns="False" x:Name="dg_maker" Loaded="dg_maker_Loaded" Unloaded="dg_maker_Unloaded" Margin="0,43,0,0" ItemsSource="{Binding Path=LoadDataBinding}">
+                    <DataGrid AutoGenerateColumns="False" x:Name="dg_maker" Loaded="dg_maker_Loaded" Unloaded="dg_maker_Unloaded" Margin="0,40,0,0" ItemsSource="{Binding Path=LoadDataBinding}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Path=Vorname}" Header="Vorname"/>
                             <DataGridTextColumn Binding="{Binding Path=Nachname}" Header="Nachname"/>
@@ -39,6 +43,7 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <Button x:Name="btn_add_maker" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Content="ADD" Height="35" Width="70" Click="btn_add_maker_Click" Margin="5,5,0,0"/>
                 </Grid>
             </TabItem>
             <TabItem>
@@ -47,7 +52,32 @@
                         <TextBlock Text="Maschinen"/>
                     </StackPanel>
                 </TabItem.Header>
-
+                <Grid>
+                    <DataGrid AutoGenerateColumns="False" x:Name="dg_maschine" Loaded="dg_maschine_Loaded" Unloaded="dg_maschine_Unloaded" Margin="0,40,0,0" ItemsSource="{Binding Path=LoadDataBinding}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Path=Maschine}" Header="Vorname"/>
+                            <DataGridTextColumn Binding="{Binding Path=Nachname}" Header="Nachname"/>
+                            <DataGridTextColumn Binding="{Binding Path=E_Mail}" Header="E-Mail-Adresse"/>
+                            <DataGridCheckBoxColumn Binding="{Binding Path=Keymember}" Header="Keymember"/>
+                            <DataGridTextColumn Binding="{Binding Path=Benutzername}" Header="Username"/>
+                            <DataGridTextColumn Binding="{Binding Path=iButtonID}" Header="iButton"/>
+                            <DataGridTemplateColumn Header="Update">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Menu>
+                                            <MenuItem Header="Action">
+                                                <MenuItem Header="Bearbeiten"/>
+                                                <MenuItem Header="Passwort ändern"/>
+                                                <MenuItem Header="Löschen"/>
+                                            </MenuItem>
+                                        </Menu>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="btn_add_maschine" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Content="ADD" Height="35" Width="70" Click="btn_add_maschin_Click" Margin="5,5,0,0"/>
+                </Grid>
             </TabItem>
             <TabItem>
                 <TabItem.Header>
@@ -56,6 +86,6 @@
                     </StackPanel>
                 </TabItem.Header>
             </TabItem>
-        </TabControl>
+        </dragablz:TabablzControl>
     </Grid>
 </Window>
