@@ -51,7 +51,7 @@ namespace PL_TS
             }
             MySqlDisconnect();
             return check;
-             */
+          
             Datenbankoperation Einloggen = new Datenbankoperation();
             int check = Einloggen.checkLogin(txtUsername.Text, txtPasswort.Text);
             if (check == 1)
@@ -66,6 +66,7 @@ namespace PL_TS
                 Visible = false;
                 form.ShowDialog();
             }
+            */
         }
     }
 }
