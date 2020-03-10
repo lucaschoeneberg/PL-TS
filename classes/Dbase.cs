@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 
-namespace WinDruckauftrag
+namespace Database
 {
     class Dbase
     {
@@ -107,6 +107,7 @@ namespace WinDruckauftrag
             {
                 connection.Open();
                 command = connection.CreateCommand();
+                string test = "SELECT * FROM " + table + " " + condition;
                 command.CommandText = "SELECT * FROM " + table + " " + condition;
                 MySqlDataReader reader = command.ExecuteReader();
                 string[] row;
