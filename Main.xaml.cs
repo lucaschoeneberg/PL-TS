@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Serial.IButton;
 
 namespace PL_TS
 {
@@ -20,6 +21,7 @@ namespace PL_TS
     /// </summary>
     public partial class Main : Window
     {
+        IButton readIButton = new IButton();
         public Main()
         {
             InitializeComponent();

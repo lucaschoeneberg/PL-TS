@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Projektlabor - Control" Height="450" Width="800">
     <Grid>
-        <TabControl>
+        <TabControl SelectionChanged="TabControl_SelectionChanged">
             <TabItem>
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
