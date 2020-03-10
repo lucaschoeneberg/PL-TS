@@ -8,7 +8,7 @@
         Title="Simulationxaml" Height="450" Width="800">
     <Grid>
         <Label x:Name="lbl_sim"  Content="Label" HorizontalAlignment="Left" Margin="264,77,0,0" VerticalAlignment="Top" Width="289"/>
-        <TextBox x:Name="tbx_maschine" HorizontalAlignment="Left" Height="23" Margin="264,49,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btn_check" Content="Button" HorizontalAlignment="Left" Margin="264,120,0,0" VerticalAlignment="Top" Width="75" Click="btn_check_Click"/>
+        <ComboBox x:Name="cb_maschinen" HorizontalAlignment="Left" Margin="264,49,0,0" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>

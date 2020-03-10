@@ -37,7 +37,8 @@ namespace PL_TS
         }
         private void btn_add_maker_Click(object sender, RoutedEventArgs e)
         {
-
+            Simulationxaml openSimulation = new Simulationxaml();
+            openSimulation.ShowDialog();
         }
     }
 }

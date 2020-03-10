@@ -12,7 +12,7 @@ namespace Serial.IButton
         private string ids = string.Empty;
         private string com = "COM3"; //Used COM-Port                               
         
-        private string read_IDs()
+        public string read_IDs()
         {
             //Only for test if the data reading works fine
             try
