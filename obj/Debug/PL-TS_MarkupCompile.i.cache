@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\GitHub\PL-TS\PL-TS\obj\Debug\
+C:\GitHub\PL-TS\obj\Debug\
 PL_TS
 none
 false
 DEBUG;TRACE
-C:\GitHub\PL-TS\PL-TS\App.xaml
-11151548125
+C:\GitHub\PL-TS\App.xaml
+2782384309
 
-61612062467
-13-1505183044
-MainWindow.xaml;
+72132423544
+29540598829
+MainWindow.xaml;PL_Login.xaml;
 
-True
+False
 
