@@ -14,16 +14,19 @@
                         <TextBlock Text="Maker" />
                     </StackPanel>
                 </TabItem.Header>
-                <DataGrid x:Name="dg_maker" Loaded="dg_maker_Loaded" Unloaded="dg_maker_Unloaded" Margin="0,34,0,0">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Vorname"/>
-                        <DataGridTextColumn Header="Nachname"/>
-                        <DataGridTextColumn Header="E-Mail-Adresse"/>
-                        <DataGridCheckBoxColumn Header="Keymember"/>
-                        <DataGridTextColumn Header="Username"/>
-                        <DataGridTextColumn Header="iButton"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <Grid>
+                    <Button x:Name="btn_add_maker" HorizontalAlignment="Center" Content="ADD" Height="25" Width="66" Background="#FF307CD6" BorderBrush="#FF307CD6" Click="btn_add_maker_Click" Margin="18,4,702,362"/>
+                    <DataGrid x:Name="dg_maker" Loaded="dg_maker_Loaded" Unloaded="dg_maker_Unloaded" Margin="0,34,0,0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Vorname"/>
+                            <DataGridTextColumn Header="Nachname"/>
+                            <DataGridTextColumn Header="E-Mail-Adresse"/>
+                            <DataGridCheckBoxColumn Header="Keymember"/>
+                            <DataGridTextColumn Header="Username"/>
+                            <DataGridTextColumn Header="iButton"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </TabItem>
             <TabItem>
                 <TabItem.Header>
