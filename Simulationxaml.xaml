@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL_TS"
         mc:Ignorable="d"
-        Title="Simulationxaml" Height="450" Width="800">
+        Title="Simulationxaml" Height="308.648" Width="266.799">
     <Grid>
-        <Label x:Name="lbl_sim"  Content="Label" HorizontalAlignment="Left" Margin="264,77,0,0" VerticalAlignment="Top" Width="289"/>
-        <Button x:Name="btn_check" Content="Button" HorizontalAlignment="Left" Margin="264,120,0,0" VerticalAlignment="Top" Width="75" Click="btn_check_Click"/>
-        <ComboBox x:Name="cb_maschinen" HorizontalAlignment="Left" Margin="264,49,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lbl_sim"  Content="Label" HorizontalAlignment="Left" Margin="22,131,0,0" VerticalAlignment="Top" Width="107"/>
+        <Button x:Name="btn_check" Content="Button" HorizontalAlignment="Left" Margin="22,226,0,0" VerticalAlignment="Top" Width="67" Click="btn_check_Click" IsEnabled="False"/>
+        <ComboBox x:Name="cb_maschinen" HorizontalAlignment="Left" Margin="22,155,0,0" VerticalAlignment="Top" Width="107"/>
+        <Label x:Name="lbl_iButton" Content="iButton auslesen..." HorizontalAlignment="Left" Margin="22,93,0,0" VerticalAlignment="Top" Width="210"/>
+        <ComboBox x:Name="cbx_com" SelectionChanged="cbx_com_Changed" Loaded="cbx_com_Loaded" HorizontalAlignment="Left" Margin="133,56,0,0" VerticalAlignment="Top" Width="99" Height="32" DropDownOpened="cbx_com_DropDownOpened"/>
+        <Button x:Name="btn_changeIbutton" Click="btn_changeIbutton_Click" Content="Change" HorizontalAlignment="Left" Margin="22,56,0,0" VerticalAlignment="Top" Width="106" IsEnabled="False" />
     </Grid>
 </Window>
