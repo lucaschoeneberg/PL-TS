@@ -13,8 +13,8 @@
         <TextBox x:Name="tbx_EMail" HorizontalAlignment="Left" Height="23" Margin="293,26,0,0" TextWrapping="Wrap" Text="E-Mail" VerticalAlignment="Top" Width="120"/>
         <CheckBox x:Name="chb_Keymember" Content="Keymember" HorizontalAlignment="Left" Margin="437,31,0,0" VerticalAlignment="Top" Click="Chb_Keymember_Click"/>
         <Label x:Name="lbl_iButton" Content="iButton" HorizontalAlignment="Left" Margin="572,32,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbx_Benutzername" HorizontalAlignment="Left" Height="23" Margin="18,84,0,0" TextWrapping="Wrap" Text="Benutzername" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox x:Name="tbx_password" materialDesign:HintAssist.Hint="Passwort..." Margin="151,74,521,312"/>
-        <PasswordBox x:Name="tbx_password_verify" materialDesign:HintAssist.Hint="Passwort..." Margin="276,74,396,312"/>
+        <TextBox x:Name="tbx_Benutzername" HorizontalAlignment="Left" Height="23" Margin="18,84,0,0" TextWrapping="Wrap" Text="Benutzername" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <PasswordBox x:Name="tbx_password" materialDesign:HintAssist.Hint="Passwort..." Margin="151,74,521,312" Visibility="Hidden"/>
+        <PasswordBox x:Name="tbx_password_verify" materialDesign:HintAssist.Hint="Passwort..." Margin="276,74,396,312" Visibility="Hidden"/>
     </Grid>
 </Window>
