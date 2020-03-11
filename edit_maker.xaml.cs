@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Database;
 using Serial.IButton;
 
@@ -49,14 +38,14 @@ namespace PL_TS
 
         private void Chb_Keymember_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void Btn_addMaker_Click(object sender, RoutedEventArgs e)
         {
             if (chb_Keymember.IsChecked == true)
             {
-                data.CommandUpdate("user", "Vorname='" + tbx_Vorname.Text + "', Nachname='" + tbx_Nachname.Text + "', E_Mail='" + tbx_EMail.Text + "', Keymember=" + 1 + ", Benutzername='" + tbx_Benutzername.Text + "', Passwort='" + tbx_password.Password + "', iButtonID='" + lbl_readiButton.Content + "'", "WHERE UserID='" + _makerID+"'");
+                data.CommandUpdate("user", "Vorname='" + tbx_Vorname.Text + "', Nachname='" + tbx_Nachname.Text + "', E_Mail='" + tbx_EMail.Text + "', Keymember=" + 1 + ", Benutzername='" + tbx_Benutzername.Text + "', Passwort='" + BCrypt.Net.BCrypt.HashPassword(tbx_password.Password) + "', iButtonID='" + lbl_readiButton.Content + "'", "WHERE UserID='" + _makerID+"'");
 
             }
             if (chb_Keymember.IsChecked == false)
