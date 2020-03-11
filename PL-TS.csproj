@@ -110,10 +110,17 @@
     <Compile Include="add_Maker.xaml.cs">
       <DependentUpon>add_Maker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="edit_maker.xaml.cs">
+      <DependentUpon>edit_maker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Simulationxaml.xaml.cs">
       <DependentUpon>Simulationxaml.xaml</DependentUpon>
     </Compile>
     <Page Include="add_Maker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="edit_maker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
