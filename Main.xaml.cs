@@ -50,6 +50,7 @@ namespace PL_TS
         {
 
         }
+
         private void dg_maschine_Loaded(object sender, RoutedEventArgs e)
         {
             string sql = "SELECT maschine.MaschinenID, Bezeichnung, GROUP_CONCAT(Vorname,' ',Nachname) as User, COUNT(Nachname) as Anzahl FROM maschine, zuweisung, user, ibutton WHERE user.iButtonID=ibutton.iButtonID AND ibutton.iButtonID=zuweisung.iButtonID AND zuweisung.MaschinenID=maschine.MaschinenID GROUP BY maschine.MaschinenID";
@@ -61,34 +62,36 @@ namespace PL_TS
             adp.Fill(ds, "LoadDataBinding");
             dg_maschine.DataContext = ds;
         }
+
         private void dg_maschine_Unloaded(object sender, RoutedEventArgs e)
         {
 
         }
+
         private void btn_add_maker_Click(object sender, RoutedEventArgs e)
         {
             add_Maker add_MakerOpen = new add_Maker();
             add_MakerOpen.ShowDialog();
         }
+
         private void btn_add_maschine_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
         private void btn_test_maschine_Click(object sender, RoutedEventArgs e)
         {
             Simulationxaml openSimulation = new Simulationxaml();
             openSimulation.ShowDialog();
         }
+
         private void btn_maker_edit_Click(object sender, RoutedEventArgs e)
         {
             DataRowView rowview = dg_maker.SelectedItem as DataRowView;
             edit_maker edit_makerOpen = new edit_maker(rowview.Row[0].ToString());
             edit_makerOpen.ShowDialog();
         }
-        private void btn_maker_edit_password_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
         private void btn_maker_delete_Click(object sender, RoutedEventArgs e)
         {
 
