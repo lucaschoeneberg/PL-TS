@@ -58,6 +58,7 @@ namespace PL_TS
         }
         private void btn_changeIbutton_Click(object sender, RoutedEventArgs e)
         {
+            btn_changeIbutton.IsEnabled = false;
             UpdateiButton();
         }
        
@@ -68,6 +69,7 @@ namespace PL_TS
             Thread.Sleep(TimeSpan.FromSeconds(1));
             string IButton = readButton.read_IDs(COM, 115200);
             lbl_iButton.Dispatcher.Invoke(new Action(() => lbl_iButton.Content = IButton));
+            btn_changeIbutton.Dispatcher.Invoke(new Action(() => btn_changeIbutton.IsEnabled = true));
         }
         private void UpdateiButton()
         {
@@ -79,6 +81,7 @@ namespace PL_TS
         private void cbx_com_Changed(object sender, RoutedEventArgs e)
         {
             UpdateiButton();
+            if (COM != "") btn_changeIbutton.IsEnabled = true; else lbl_iButton.Content = false;
         }
 
         private void Btn_addMaker_Click(object sender, RoutedEventArgs e)
@@ -102,6 +105,15 @@ namespace PL_TS
                     data.CommandInsertInto("user", "Vorname, Nachname, E_Mail, Keymember, iButtonID", "'" + tbx_Vorname.Text + "','" + tbx_Nachname.Text + "','"+tbx_EMail.Text+"',"+0+",'"+ID.Split(';')[0]+"'");
                     
                 }
+            }
+        }
+        private void cbx_com_DropDownOpened(object sender, EventArgs e)
+        {
+            cbx_com.Items.Clear();
+            string[] ports = SerialPort.GetPortNames();
+            foreach (string port in ports)
+            {
+                cbx_com.Items.Add(port);
             }
         }
     }
