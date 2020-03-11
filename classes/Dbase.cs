@@ -229,7 +229,7 @@ namespace Database
         /// <param name="table"> Name der Tabelle, in der modifilziert werden soll</param>
         /// <param name="set"> Spaltenname = Wert</param>
         /// <param name="condition"> Bedingung, Strings eingeschlossen in Hochkommata</param>
-        public void CommandUpdate(string table, string set, string condition)
+        public bool CommandUpdate(string table, string set, string condition)
         {
             try
             {
@@ -239,11 +239,13 @@ namespace Database
                 MySqlCommand commandUpdate = new MySqlCommand(myUpdateQuery, connection);
                 commandUpdate.ExecuteNonQuery();
                 connection.Close();
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Fehler bei 'Update'\n" + ex.Message, "Error",
                     MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
             }
         }
 
