@@ -55,8 +55,9 @@
                 <Grid>
                     <DataGrid AutoGenerateColumns="False" x:Name="dg_maschine" Loaded="dg_maschine_Loaded" Unloaded="dg_maschine_Unloaded" Margin="0,40,400,0" ItemsSource="{Binding Path=LoadDataBinding}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Path=Maschine}" Header="Maschine"/>
-                            <DataGridTextColumn Binding="{Binding Path=Nachname}" Header="User Anzal"/>
+                            <DataGridTextColumn Binding="{Binding Path=Bezeichnung}" Header="Maschine"/>
+                            <DataGridTextColumn Binding="{Binding Path=User}" Header="User"/>
+                            <DataGridTextColumn Binding="{Binding Path=Anzahl}" Header="Anzahl"/>
                             <DataGridTemplateColumn Header="Update">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
