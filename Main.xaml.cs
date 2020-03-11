@@ -44,11 +44,23 @@ namespace PL_TS
         {
 
         }
+        private void dg_maschine_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void dg_maschine_Unloaded(object sender, RoutedEventArgs e)
+        {
+
+        }
         private void btn_add_maker_Click(object sender, RoutedEventArgs e)
         {
 
             Simulationxaml openSimulation = new Simulationxaml();
             openSimulation.ShowDialog();
+
+        }
+        private void btn_add_maschine_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

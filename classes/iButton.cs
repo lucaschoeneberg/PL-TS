@@ -10,13 +10,14 @@ namespace Serial.IButton
 
         //Needed variables
         private string ids = string.Empty;
-        private string com = "COM3"; //Used COM-Port                               
+        private string com = "COM7"; //Used COM-Port                               
         
         public string read_IDs()
         {
             //Only for test if the data reading works fine
             try
             {
+                serialinit();
                 serport.Open(); //Opens the serial-connection
 
                 ids = serport.ReadLine(); //Reads the data from the serial connection                
