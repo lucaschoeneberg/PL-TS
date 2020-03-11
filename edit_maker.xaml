@@ -14,7 +14,7 @@
         <CheckBox x:Name="chb_Keymember" Content="Keymember" HorizontalAlignment="Left" Margin="437,56,0,0" VerticalAlignment="Top" Click="Chb_Keymember_Click" Checked="Chb_Keymember_Checked" Unchecked="Chb_Keymember_Unchecked"/>
         <Label x:Name="lbl_iButton" Content="iButton" HorizontalAlignment="Left" Margin="18,209,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbx_Benutzername" HorizontalAlignment="Left" Height="23" Margin="18,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
-        <PasswordBox x:Name="tbx_password" materialDesign:HintAssist.Hint="Passwort..." Margin="151,118,521,268" Visibility="Hidden"/>
+        <PasswordBox  x:Name="tbx_password" materialDesign:HintAssist.Hint="Passwort..." Margin="151,118,521,268" Visibility="Hidden"/>
         <PasswordBox x:Name="tbx_password_verify" materialDesign:HintAssist.Hint="Passwort..." Margin="276,118,396,268" Visibility="Hidden"/>
         <Button x:Name="btn_updateMaker" Content="Maker Ändern&#xA;" HorizontalAlignment="Left" Margin="369,259,0,0" VerticalAlignment="Top" Width="153" Click="Btn_addMaker_Click"/>
         <Label x:Name="lbl_Vorname" Content="Vorname" HorizontalAlignment="Left" Margin="18,27,0,0" VerticalAlignment="Top"/>
