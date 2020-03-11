@@ -70,6 +70,16 @@ namespace PL_TS
             if (COM != "") btn_changeIbutton.IsEnabled = true; else lbl_iButton.Content = false;
         }
 
+        private void cbx_com_DropDownOpened(object sender, EventArgs e)
+        {
+            cbx_com.Items.Clear();
+            string[] ports = SerialPort.GetPortNames();
+            foreach (string port in ports)
+            {
+                cbx_com.Items.Add(port);
+            }
+        }
+
         private void btn_check_Click(object sender, RoutedEventArgs e)
         {
             List<string[]> check = new List<string[]>();
@@ -84,16 +94,6 @@ namespace PL_TS
             if (check.Count == 0)
             {
                 MessageBox.Show("Sie sind für die Maschiene nicht berechtigt!","Nicht Berechtigt",MessageBoxButton.OK,MessageBoxImage.Error);
-            }
-        }
-
-        private void cbx_com_DropDownOpened(object sender, EventArgs e)
-        {
-            cbx_com.Items.Clear();
-            string[] ports = SerialPort.GetPortNames();
-            foreach (string port in ports)
-            {
-                cbx_com.Items.Add(port);
             }
         }
     }
