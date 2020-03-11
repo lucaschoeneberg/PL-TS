@@ -36,7 +36,6 @@
                                         <Menu>
                                             <MenuItem Header="Action">
                                                 <MenuItem x:Name="btn_maker_edit" Click="btn_maker_edit_Click" Header="Bearbeiten" />
-                                                <MenuItem x:Name="btn_maker_edit_password" Click="btn_maker_edit_password_Click" Header="Passwort ändern"/>
                                                 <MenuItem x:Name="btn_maker_delete"  Click="btn_maker_delete_Click" Header="Löschen" />
                                             </MenuItem>
                                         </Menu>
