@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading;
 using System.Windows;
 using Database;
 using Serial.IButton;
+using System.IO.Ports;
+using PL_TS;
 
 namespace PL_TS
 {
@@ -41,16 +45,77 @@ namespace PL_TS
 
         }
 
+        private void cbx_com_Loaded(object sender, RoutedEventArgs e)
+        {
+            string[] ports = SerialPort.GetPortNames();
+            foreach (string port in ports)
+            {
+                cbx_com.Items.Add(port);
+            }
+        }
+
+        private void btn_changeIbutton_Click(object sender, RoutedEventArgs e)
+        {
+            btn_changeIbutton.IsEnabled = false;
+            UpdateiButton();
+        }
+
+        string COM;
+        private void UpdateiButton_Thread()
+        {
+            string IButton;
+            IButton readButton = new IButton();
+            Thread.Sleep(TimeSpan.FromSeconds(1));
+            try
+            {
+                IButton = readButton.read_IDs(COM, 115200);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            lbl_iButton.Dispatcher.Invoke(new Action(() => lbl_iButton.Content = IButton));
+            btn_changeIbutton.Dispatcher.Invoke(new Action(() => btn_changeIbutton.IsEnabled = true));
+        }
+
+        private void UpdateiButton()
+        {
+            COM = cbx_com.SelectedItem.ToString();
+            Thread thread = new Thread(UpdateiButton_Thread);
+            thread.Start();
+        }
+
+        private void cbx_com_Changed(object sender, RoutedEventArgs e)
+        {
+            UpdateiButton();
+            if (COM != "") btn_changeIbutton.IsEnabled = true; else lbl_iButton.Content = false;
+        }
+
+        private void cbx_com_DropDownOpened(object sender, EventArgs e)
+        {
+            cbx_com.Items.Clear();
+            string[] ports = SerialPort.GetPortNames();
+            foreach (string port in ports)
+            {
+                cbx_com.Items.Add(port);
+            }
+        }
+
         private void Btn_addMaker_Click(object sender, RoutedEventArgs e)
         {
             if (chb_Keymember.IsChecked == true)
             {
-                data.CommandUpdate("user", "Vorname='" + tbx_Vorname.Text + "', Nachname='" + tbx_Nachname.Text + "', E_Mail='" + tbx_EMail.Text + "', Keymember=" + 1 + ", Benutzername='" + tbx_Benutzername.Text + "', Passwort='" + BCrypt.Net.BCrypt.HashPassword(tbx_password.Password) + "', iButtonID='" + lbl_readiButton.Content + "'", "WHERE UserID='" + _makerID+"'");
-
+                if (data.CommandUpdate("user", "Vorname='" + tbx_Vorname.Text + "', Nachname='" + tbx_Nachname.Text + "', E_Mail='" + tbx_EMail.Text + "', Keymember=" + 1 + ", Benutzername='" + tbx_Benutzername.Text + "', Passwort='" + BCrypt.Net.BCrypt.HashPassword(tbx_password.Password) + "', iButtonID='" + lbl_readiButton.Content + "'", "WHERE UserID='" + _makerID + "'"))
+                {
+                    this.Close();
+                }            
             }
             if (chb_Keymember.IsChecked == false)
             {
-                data.CommandUpdate("user", "Vorname='" + tbx_Vorname.Text + "', Nachname='" + tbx_Nachname.Text + "', E_Mail='" + tbx_EMail.Text + "', Keymember=" + 0 + ", iButtonID='" + lbl_readiButton.Content + "'", "WHERE UserID='" + _makerID+"'");
+                if (data.CommandUpdate("user", "Vorname='" + tbx_Vorname.Text + "', Nachname='" + tbx_Nachname.Text + "', E_Mail='" + tbx_EMail.Text + "', Keymember=" + 0 + ", iButtonID='" + lbl_readiButton.Content + "'", "WHERE UserID='" + _makerID+"'"))
+                {
+                    this.Close();
+                }
             }
         }
 
