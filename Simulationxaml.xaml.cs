@@ -34,13 +34,12 @@ namespace PL_TS
                 x++;
             }
         }
-
         private void btn_check_Click(object sender, RoutedEventArgs e)
         {
             List<string[]> check = new List<string[]>();
             string Button;
             IButton checkIButton = new IButton();
-            Button=checkIButton.read_IDs();
+            Button=checkIButton.read_IDs("COM3",123124);
             string test= "WHERE maschine.MaschinenID = zuweisung.MaschinenID AND zuweisung.iButtonID = '"+Button.Split(';')[0]+"' AND Bezeichnung = '"+cb_maschinen.Text+"' AND maschine.MaschinenID = '"+Button.Split(';')[1]+"'";
             check =data.CommandSelectAsListFrom("zuweisung, maschine", "WHERE maschine.MaschinenID = zuweisung.MaschinenID AND zuweisung.iButtonID = '"+Button.Split(';')[0]+"' AND Bezeichnung = '"+cb_maschinen.Text+"' AND maschine.MaschinenID = '"+Button.Split(';')[1]+"'");
             if (check.Count >= 1)
