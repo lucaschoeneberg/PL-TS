@@ -43,7 +43,7 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="btn_add_maker" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Content="ADD" Height="35" Width="70" Click="btn_add_maker_Click" Margin="5,5,0,0"/>
+                    <Button x:Name="btn_add_maker" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Content="Add" Height="35" Width="70" Click="btn_add_maker_Click" Margin="5,5,0,0"/>
                 </Grid>
             </TabItem>
             <TabItem>
@@ -53,21 +53,16 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
-                    <DataGrid AutoGenerateColumns="False" x:Name="dg_maschine" Loaded="dg_maschine_Loaded" Unloaded="dg_maschine_Unloaded" Margin="0,40,0,0" ItemsSource="{Binding Path=LoadDataBinding}">
+                    <DataGrid AutoGenerateColumns="False" x:Name="dg_maschine" Loaded="dg_maschine_Loaded" Unloaded="dg_maschine_Unloaded" Margin="0,40,400,0" ItemsSource="{Binding Path=LoadDataBinding}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Path=Maschine}" Header="Vorname"/>
-                            <DataGridTextColumn Binding="{Binding Path=Nachname}" Header="Nachname"/>
-                            <DataGridTextColumn Binding="{Binding Path=E_Mail}" Header="E-Mail-Adresse"/>
-                            <DataGridCheckBoxColumn Binding="{Binding Path=Keymember}" Header="Keymember"/>
-                            <DataGridTextColumn Binding="{Binding Path=Benutzername}" Header="Username"/>
-                            <DataGridTextColumn Binding="{Binding Path=iButtonID}" Header="iButton"/>
+                            <DataGridTextColumn Binding="{Binding Path=Maschine}" Header="Maschine"/>
+                            <DataGridTextColumn Binding="{Binding Path=Nachname}" Header="User Anzal"/>
                             <DataGridTemplateColumn Header="Update">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Menu>
                                             <MenuItem Header="Action">
                                                 <MenuItem Header="Bearbeiten"/>
-                                                <MenuItem Header="Passwort ändern"/>
                                                 <MenuItem Header="Löschen"/>
                                             </MenuItem>
                                         </Menu>
@@ -76,7 +71,8 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="btn_add_maschine" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Content="ADD" Height="35" Width="70" Click="btn_add_maschine_Click" Margin="5,5,0,0"/>
+                    <Button x:Name="btn_add_maschine" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Content="Add" Height="35" Width="70" Click="btn_add_maschine_Click" Margin="5,5,0,0"/>
+                    <Button x:Name="btn_test_maschine" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Content="Test" Height="35" Width="70" Click="btn_test_maschine_Click" Margin="80,5,0,0"/>
                 </Grid>
             </TabItem>
             <TabItem>
