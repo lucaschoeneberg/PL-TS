@@ -53,7 +53,7 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
-                    <DataGrid AutoGenerateColumns="False" x:Name="dg_maschine" Loaded="dg_maschine_Loaded" Unloaded="dg_maschine_Unloaded" Margin="0,40,400,0" ItemsSource="{Binding Path=LoadDataBinding}">
+                    <DataGrid AutoGenerateColumns="False" x:Name="dg_maschine" Loaded="dg_maschine_Loaded" Unloaded="dg_maschine_Unloaded" Margin="0,40,0,0" ItemsSource="{Binding Path=LoadDataBinding}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Path=Bezeichnung}" Header="Maschine"/>
                             <DataGridTextColumn Binding="{Binding Path=User}" Header="User"/>
