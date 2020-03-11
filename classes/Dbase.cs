@@ -18,6 +18,7 @@ namespace Database
 {
     class Dbase
     {
+        string dbServer;
         string dbName;
         string uid;
         string passw;
@@ -25,15 +26,13 @@ namespace Database
         MySqlConnection connection;
         MySqlCommand command;
 
-        public Dbase(string dbName, string uid, string passw)
+        public Dbase(string dbServer, string dbName, string uid, string passw)
         {
+            this.dbServer = dbServer;
             this.dbName = dbName;
             this.uid = uid;
             this.passw = passw;
-            connectionstr = "SERVER   = localhost;" +
-                            "DATABASE = " + dbName +
-                            ";UID     = " + uid +
-                            ";PWD     = " + passw + ";";
+            connectionstr = "SERVER = " + dbServer + ";DATABASE = " + dbName +";UID = " + uid + ";PWD = " + passw + ";";
             try
             {
                 if (connection != null)
