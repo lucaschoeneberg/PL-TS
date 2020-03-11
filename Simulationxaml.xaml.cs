@@ -43,9 +43,17 @@ namespace PL_TS
         string COM;
         private void UpdateiButton_Thread()
         {
+            string IButton;
             IButton readButton = new IButton();
             Thread.Sleep(TimeSpan.FromSeconds(1));
-            string IButton = readButton.read_IDs(COM, 115200);
+            try
+            {
+                IButton = readButton.read_IDs(COM, 115200);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
             lbl_iButton.Dispatcher.Invoke(new Action(() => lbl_iButton.Content = IButton));
             btn_changeIbutton.Dispatcher.Invoke(new Action(() => btn_changeIbutton.IsEnabled = true));
         }
