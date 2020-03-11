@@ -60,6 +60,8 @@ namespace PL_TS
         }
         private void btn_add_maker_Click(object sender, RoutedEventArgs e)
         {
+            add_maker add_makerOpen = new add_maker();
+            add_makerOpen.ShowDialog();
         }
         private void btn_add_maschine_Click(object sender, RoutedEventArgs e)
         {
@@ -69,6 +71,17 @@ namespace PL_TS
         {
             Simulationxaml openSimulation = new Simulationxaml();
             openSimulation.ShowDialog();
+        }
+        private void btn_maker_edit_Click(object sender, RoutedEventArgs e)
+        {
+        }
+        private void btn_maker_edit_password_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btn_maker_delete_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
