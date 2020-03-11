@@ -6,23 +6,25 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PL_TS"
         mc:Ignorable="d"
-        Title="edit_maker" Height="450" Width="800">
+        Title="edit_maker" Height="339.96" Width="554.871">
     <Grid>
         <TextBox x:Name="tbx_Vorname" HorizontalAlignment="Left" Height="23" Margin="18,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="tbx_Nachname" HorizontalAlignment="Left" Height="23" Margin="151,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="tbx_EMail" HorizontalAlignment="Left" Height="23" Margin="293,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <CheckBox x:Name="chb_Keymember" Content="Keymember" HorizontalAlignment="Left" Margin="437,56,0,0" VerticalAlignment="Top" Click="Chb_Keymember_Click" Checked="Chb_Keymember_Checked" Unchecked="Chb_Keymember_Unchecked"/>
-        <Label x:Name="lbl_iButton" Content="iButton" HorizontalAlignment="Left" Margin="574,27,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_iButton" Content="iButton" HorizontalAlignment="Left" Margin="18,209,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbx_Benutzername" HorizontalAlignment="Left" Height="23" Margin="18,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
         <PasswordBox x:Name="tbx_password" materialDesign:HintAssist.Hint="Passwort..." Margin="151,118,521,268" Visibility="Hidden"/>
         <PasswordBox x:Name="tbx_password_verify" materialDesign:HintAssist.Hint="Passwort..." Margin="276,118,396,268" Visibility="Hidden"/>
-        <Button x:Name="btn_updateMaker" Content="Maker Ändern&#xA;" HorizontalAlignment="Left" Margin="629,377,0,0" VerticalAlignment="Top" Width="153" Click="Btn_addMaker_Click"/>
+        <Button x:Name="btn_updateMaker" Content="Maker Ändern&#xA;" HorizontalAlignment="Left" Margin="369,259,0,0" VerticalAlignment="Top" Width="153" Click="Btn_addMaker_Click"/>
         <Label x:Name="lbl_Vorname" Content="Vorname" HorizontalAlignment="Left" Margin="18,27,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_Nachname" Content="Nachname" HorizontalAlignment="Left" Margin="151,27,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_EMail" Content="E-Mail" HorizontalAlignment="Left" Margin="293,27,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_Benutzername" Content="Benutzername" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,99,0,0" Visibility="Hidden"/>
         <Label x:Name="lbl_Passwort" Content="Passwort" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="151,101,0,0" Visibility="Hidden"/>
         <Label x:Name="lbl_Passwort_verify" Content="Passwort wiederholen" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="276,99,0,0" Visibility="Hidden"/>
-        <Label x:Name="lbl_readiButton" Content="Label" HorizontalAlignment="Left" Margin="574,54,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_readiButton" Content="iButton auslesen..." HorizontalAlignment="Left" Margin="18,275,0,0" VerticalAlignment="Top" Width="210"/>
+        <ComboBox x:Name="cbx_com" SelectionChanged="cbx_com_Changed" Loaded="cbx_com_Loaded" HorizontalAlignment="Left" Margin="129,238,0,0" VerticalAlignment="Top" Width="99" Height="32" DropDownOpened="cbx_com_DropDownOpened"/>
+        <Button x:Name="btn_changeIbutton" Click="btn_changeIbutton_Click" Content="Change" HorizontalAlignment="Left" Margin="18,238,0,0" VerticalAlignment="Top" Width="106" IsEnabled="False" />
     </Grid>
 </Window>
