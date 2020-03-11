@@ -30,6 +30,10 @@ namespace PL_TS
 
         private void dg_maker_Loaded(object sender, RoutedEventArgs e)
         {
+            dg_maker_update();
+        }
+        public bool dg_maker_update()
+        {
             string sql = "SELECT * FROM user;";
 
             MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
@@ -38,7 +42,8 @@ namespace PL_TS
             DataSet ds = new DataSet();
             adp.Fill(ds, "LoadDataBinding");
             dg_maker.DataContext = ds;
-            btn_add_maker.Content =  btn_add_maker.Content + " Bearbeiten";
+            btn_add_maker.Content = btn_add_maker.Content + " Bearbeiten";
+            return true;
         }
 
         private void dg_maker_Unloaded(object sender, RoutedEventArgs e)
