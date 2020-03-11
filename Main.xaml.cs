@@ -63,5 +63,9 @@ namespace PL_TS
         {
 
         }
+        private void btn_test_maschine_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
