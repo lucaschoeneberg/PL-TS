@@ -30,10 +30,10 @@ namespace PL_TS
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
             List<string[]> Logindaten = new List<string[]>();
-            Logindaten = data.CommandSelectAsListFrom("user"," WHERE E_Mail='"+tbx_username.Text+"' OR Benutzername='"+tbx_username.Text+"' AND Passwort='"+tbx_password.Password+"'");
+            Logindaten = data.CommandSelectAsListFrom("user"," WHERE E_Mail='"+tbx_username.Text+"' OR Benutzername='"+tbx_username.Text+"'");
             if(Logindaten.Count!=0)
             {
-                if ((tbx_username.Text == Logindaten[0][3] || tbx_username.Text == Logindaten[0][5]) && Logindaten[0][6] == tbx_password.Password)
+                if ((tbx_username.Text == Logindaten[0][3] || tbx_username.Text == Logindaten[0][5]) && BCrypt.Net.BCrypt.Verify(tbx_password.Password, Logindaten[0][6]))
                 {
                     Main openMain = new Main();
                     this.Visibility = Visibility.Hidden;
