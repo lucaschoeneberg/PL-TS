@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
+using System.IO.Ports;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -47,6 +48,41 @@ namespace PL_TS
                 lbl_Passwort_verify.Visibility = Visibility.Hidden;
             }
         }
+        private void cbx_com_Loaded(object sender, RoutedEventArgs e)
+        {
+            string[] ports = SerialPort.GetPortNames();
+            foreach (string port in ports)
+            {
+                cbx_com.Items.Add(port);
+            }
+        }
+        private void btn_changeIbutton_Click(object sender, RoutedEventArgs e)
+        {
+            btn_changeIbutton.IsEnabled = false;
+            UpdateiButton();
+        }
+       
+        string COM;
+        private void UpdateiButton_Thread()
+        {
+            IButton readButton = new IButton();
+            Thread.Sleep(TimeSpan.FromSeconds(1));
+            string IButton = readButton.read_IDs(COM, 115200);
+            lbl_iButton.Dispatcher.Invoke(new Action(() => lbl_iButton.Content = IButton));
+            btn_changeIbutton.Dispatcher.Invoke(new Action(() => btn_changeIbutton.IsEnabled = true));
+        }
+        private void UpdateiButton()
+        {
+            COM = cbx_com.SelectedItem.ToString();
+            Thread thread = new Thread(UpdateiButton_Thread);
+            thread.Start();
+        }
+
+        private void cbx_com_Changed(object sender, RoutedEventArgs e)
+        {
+            UpdateiButton();
+            if (COM != "") btn_changeIbutton.IsEnabled = true; else lbl_iButton.Content = false;
+        }
 
         private void Btn_addMaker_Click(object sender, RoutedEventArgs e)
         {
@@ -54,7 +90,7 @@ namespace PL_TS
             {
                 IButton readButton = new IButton();
                 Dbase data = new Dbase("localhost","projektlabor","root","");
-                string ID = readButton.read_IDs();
+                string ID = readButton.read_IDs(cbx_com.SelectedItem.ToString(),115000);
                 lbl_iButton.Content = ID.Split(';')[0];
                 data.CommandInsertInto("ibutton", "iButtonID, Typ", "'" + ID.Split(';')[0] + "','DS1990A'");
                 if (chb_Keymember.IsChecked == true)
@@ -69,6 +105,15 @@ namespace PL_TS
                     data.CommandInsertInto("user", "Vorname, Nachname, E_Mail, Keymember, iButtonID", "'" + tbx_Vorname.Text + "','" + tbx_Nachname.Text + "','"+tbx_EMail.Text+"',"+0+",'"+ID.Split(';')[0]+"'");
                     
                 }
+            }
+        }
+        private void cbx_com_DropDownOpened(object sender, EventArgs e)
+        {
+            cbx_com.Items.Clear();
+            string[] ports = SerialPort.GetPortNames();
+            foreach (string port in ports)
+            {
+                cbx_com.Items.Add(port);
             }
         }
     }

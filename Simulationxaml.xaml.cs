@@ -1,16 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.IO.Ports;
 using Database;
 using Serial.IButton;
 
@@ -34,13 +26,47 @@ namespace PL_TS
                 x++;
             }
         }
+        private void cbx_com_Loaded(object sender, RoutedEventArgs e)
+        {
+            string[] ports = SerialPort.GetPortNames();
+            foreach (string port in ports)
+            {
+                cbx_com.Items.Add(port);
+            }
+        }
+        private void btn_changeIbutton_Click(object sender, RoutedEventArgs e)
+        {
+            btn_changeIbutton.IsEnabled = false;
+            UpdateiButton();
+        }
+
+        string COM;
+        private void UpdateiButton_Thread()
+        {
+            IButton readButton = new IButton();
+            Thread.Sleep(TimeSpan.FromSeconds(1));
+            string IButton = readButton.read_IDs(COM, 115200);
+            lbl_iButton.Dispatcher.Invoke(new Action(() => lbl_iButton.Content = IButton));
+            btn_changeIbutton.Dispatcher.Invoke(new Action(() => btn_changeIbutton.IsEnabled = true));
+        }
+        private void UpdateiButton()
+        {
+            COM = cbx_com.SelectedItem.ToString();
+            Thread thread = new Thread(UpdateiButton_Thread);
+            thread.Start();
+        }
+
+        private void cbx_com_Changed(object sender, RoutedEventArgs e)
+        {
+            UpdateiButton();
+            if (COM != "") btn_changeIbutton.IsEnabled = true; else lbl_iButton.Content = false;
+        }
 
         private void btn_check_Click(object sender, RoutedEventArgs e)
         {
             List<string[]> check = new List<string[]>();
             string Button;
-            IButton checkIButton = new IButton();
-            Button=checkIButton.read_IDs();
+            Button= lbl_iButton.Content.ToString();
             string test= "WHERE maschine.MaschinenID = zuweisung.MaschinenID AND zuweisung.iButtonID = '"+Button.Split(';')[0]+"' AND Bezeichnung = '"+cb_maschinen.Text+"' AND maschine.MaschinenID = '"+Button.Split(';')[1]+"'";
             check =data.CommandSelectAsListFrom("zuweisung, maschine", "WHERE maschine.MaschinenID = zuweisung.MaschinenID AND zuweisung.iButtonID = '"+Button.Split(';')[0]+"' AND Bezeichnung = '"+cb_maschinen.Text+"' AND maschine.MaschinenID = '"+Button.Split(';')[1]+"'");
             if (check.Count >= 1)
@@ -50,6 +76,16 @@ namespace PL_TS
             if (check.Count == 0)
             {
                 MessageBox.Show("Sie sind für die Maschiene nicht berechtigt!","Nicht Berechtigt",MessageBoxButton.OK,MessageBoxImage.Error);
+            }
+        }
+
+        private void cbx_com_DropDownOpened(object sender, EventArgs e)
+        {
+            cbx_com.Items.Clear();
+            string[] ports = SerialPort.GetPortNames();
+            foreach (string port in ports)
+            {
+                cbx_com.Items.Add(port);
             }
         }
     }
