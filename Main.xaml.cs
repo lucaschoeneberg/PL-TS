@@ -60,8 +60,8 @@ namespace PL_TS
         }
         private void btn_add_maker_Click(object sender, RoutedEventArgs e)
         {
-            add_maker add_makerOpen = new add_maker();
-            add_makerOpen.ShowDialog();
+            add_Maker add_MakerOpen = new add_Maker();
+            add_MakerOpen.ShowDialog();
         }
         private void btn_add_maschine_Click(object sender, RoutedEventArgs e)
         {
