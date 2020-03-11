@@ -46,7 +46,13 @@ namespace PL_TS
         }
         private void dg_maschine_Loaded(object sender, RoutedEventArgs e)
         {
-
+            string sql = "SELECT maschine.MaschinenID, Bezeichnung, GROUP_CONCAT(Vorname,' ',Nachname) as User, COUNT(Nachname) as Anzahl FROM maschine, zuweisung, user, ibutton WHERE user.iButtonID=ibutton.iButtonID AND ibutton.iButtonID=zuweisung.iButtonID AND zuweisung.MaschinenID=maschine.MaschinenID GROUP BY maschine.MaschinenID";
+            MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            MySqlCommand cmdSel = new MySqlCommand(sql, connection);
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmdSel);
+            DataSet ds = new DataSet();
+            adp.Fill(ds, "LoadDataBinding");
+            dg_maschine.DataContext = ds;
         }
         private void dg_maschine_Unloaded(object sender, RoutedEventArgs e)
         {
