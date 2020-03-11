@@ -21,7 +21,7 @@ namespace PL_TS
     /// </summary>
     public partial class Simulationxaml : Window
     {
-        Dbase data = new Dbase("Projektlabor", "root", "");
+        Dbase data = new Dbase("localhost","Projektlabor", "root", "");
         List<string[]> Maschienen = new List<string[]>();
         public Simulationxaml()
         {

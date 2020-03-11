@@ -20,22 +20,25 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
-                    <DataGrid AutoGenerateColumns="False" x:Name="dg_maker" Loaded="dg_maker_Loaded" Unloaded="dg_maker_Unloaded" Margin="0,40,0,0" ItemsSource="{Binding Path=LoadDataBinding}">
+                    <DataGrid CanUserAddRows="False" AutoGenerateColumns="False" x:Name="dg_maker" Loaded="dg_maker_Loaded" Unloaded="dg_maker_Unloaded" Margin="0,40,0,0" ItemsSource="{Binding Path=LoadDataBinding}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Path=Vorname}" Header="Vorname"/>
-                            <DataGridTextColumn Binding="{Binding Path=Nachname}" Header="Nachname"/>
-                            <DataGridTextColumn Binding="{Binding Path=E_Mail}" Header="E-Mail-Adresse"/>
-                            <DataGridCheckBoxColumn Binding="{Binding Path=Keymember}" Header="Keymember"/>
-                            <DataGridTextColumn Binding="{Binding Path=Benutzername}" Header="Username"/>
-                            <DataGridTextColumn Binding="{Binding Path=iButtonID}" Header="iButton"/>
-                            <DataGridTemplateColumn Header="Update">
+                         
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=Vorname}" Header="Vorname" IsReadOnly="True"/>
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=Nachname}" Header="Nachname" IsReadOnly="True"/>
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=E_Mail}" Header="E-Mail-Adresse" IsReadOnly="True"/>
+                            <DataGridCheckBoxColumn Width="*" Binding="{Binding Path=Keymember}" Header="Keymember" IsReadOnly="True"/>
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=Benutzername}" Header="Username" IsReadOnly="True"/>
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=iButtonID}" Header="iButton" IsReadOnly="True"/>
+                            <DataGridTemplateColumn Header="Update" IsReadOnly="True">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Menu>
                                             <MenuItem Header="Action">
-                                                <MenuItem Header="Bearbeiten"/>
-                                                <MenuItem Header="Passwort ändern"/>
-                                                <MenuItem Header="Löschen"/>
+                                                <Button x:Name="btn_maker_edit" Click="btn_maker_edit_Click" Content="Bearbeiten">
+                                             
+                                                </Button>
+                                                <MenuItem x:Name="btn_maker_edit_password" Uid="{Binding Path=UserID}" Click="btn_maker_edit_password_Click" Header="Passwort ändern"/>
+                                                <MenuItem x:Name="btn_maker_delete" Uid="{Binding Path=UserID}" Click="btn_maker_delete_Click" Header="Löschen"/>
                                             </MenuItem>
                                         </Menu>
                                     </DataTemplate>
@@ -53,12 +56,12 @@
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
-                    <DataGrid AutoGenerateColumns="False" x:Name="dg_maschine" Loaded="dg_maschine_Loaded" Unloaded="dg_maschine_Unloaded" Margin="0,40,0,0" ItemsSource="{Binding Path=LoadDataBinding}">
+                    <DataGrid CanUserAddRows="False" AutoGenerateColumns="False" x:Name="dg_maschine" Loaded="dg_maschine_Loaded" Unloaded="dg_maschine_Unloaded" Margin="0,40,0,0" ItemsSource="{Binding Path=LoadDataBinding}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Path=Bezeichnung}" Header="Maschine"/>
-                            <DataGridTextColumn Binding="{Binding Path=User}" Header="User"/>
-                            <DataGridTextColumn Binding="{Binding Path=Anzahl}" Header="Anzahl"/>
-                            <DataGridTemplateColumn Header="Update">
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=Bezeichnung}" Header="Maschine" IsReadOnly="True"/>
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=User}" Header="User" IsReadOnly="True"/>
+                            <DataGridTextColumn Width="*" Binding="{Binding Path=Anzahl}" Header="Anzahl" IsReadOnly="True"/>
+                            <DataGridTemplateColumn Header="Update" IsReadOnly="True">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Menu>
