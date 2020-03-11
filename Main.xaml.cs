@@ -38,6 +38,7 @@ namespace PL_TS
             DataSet ds = new DataSet();
             adp.Fill(ds, "LoadDataBinding");
             dg_maker.DataContext = ds;
+            btn_add_maker.Content =  btn_add_maker.Content + " Bearbeiten";
         }
 
         private void dg_maker_Unloaded(object sender, RoutedEventArgs e)
@@ -47,6 +48,7 @@ namespace PL_TS
         private void dg_maschine_Loaded(object sender, RoutedEventArgs e)
         {
             string sql = "SELECT maschine.MaschinenID, Bezeichnung, GROUP_CONCAT(Vorname,' ',Nachname) as User, COUNT(Nachname) as Anzahl FROM maschine, zuweisung, user, ibutton WHERE user.iButtonID=ibutton.iButtonID AND ibutton.iButtonID=zuweisung.iButtonID AND zuweisung.MaschinenID=maschine.MaschinenID GROUP BY maschine.MaschinenID";
+
             MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             MySqlCommand cmdSel = new MySqlCommand(sql, connection);
             MySqlDataAdapter adp = new MySqlDataAdapter(cmdSel);
@@ -74,6 +76,9 @@ namespace PL_TS
         }
         private void btn_maker_edit_Click(object sender, RoutedEventArgs e)
         {
+            DataRowView rowview = dg_maker.SelectedItem as DataRowView;
+            edit_maker edit_makerOpen = new edit_maker(rowview.Row[0].ToString());
+            edit_makerOpen.ShowDialog();
         }
         private void btn_maker_edit_password_Click(object sender, RoutedEventArgs e)
         {
