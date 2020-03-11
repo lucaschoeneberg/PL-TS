@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="Projektlabor - Control" Height="450" Width="800">
     <Grid>
-        <dragablz:TabablzControl SelectionChanged="TabablzControl_SelectionChanged">
+        <dragablz:TabablzControl>
             <dragablz:TabablzControl.InterTabController>
                 <dragablz:InterTabController />
             </dragablz:TabablzControl.InterTabController>
