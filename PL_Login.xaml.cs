@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Configuration;
 using Database;
 
 namespace PL_TS
@@ -20,7 +21,7 @@ namespace PL_TS
     /// </summary>
     public partial class PL_Login : Window
     {
-        Dbase data = new Dbase("Projektlabor", "root", "");
+        Dbase data = new Dbase("localhost","Projektlabor", "root", "");
         public PL_Login()
         { 
             InitializeComponent();
