@@ -10,7 +10,7 @@ namespace Serial.IButton
 
         //Needed variables
         private string ids = string.Empty;
-        private string com = "COM7"; //Used COM-Port                               
+        private string com = "COM6"; //Used COM-Port                               
         
         public string read_IDs()
         {
@@ -22,10 +22,10 @@ namespace Serial.IButton
 
                 ids = serport.ReadLine(); //Reads the data from the serial connection                
                 
-                if (ids.Length == 23) //Check if the data stored in IDs is a valid
-                    return ids; //Output of the valid IDs
-                else
-                    MessageBox.Show("IDs fehlerhaft!"); //Error if the data in "mac" is not a valid MAC-Address
+                //if (ids.Length == 20) //Check if the data stored in IDs is a valid
+                return ids; //Output of the valid IDs
+                //else
+                    //MessageBox.Show("IDs fehlerhaft!"); //Error if the data in "mac" is not a valid MAC-Address
 
                 ids = "";
 

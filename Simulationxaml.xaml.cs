@@ -41,10 +41,15 @@ namespace PL_TS
             string Button;
             IButton checkIButton = new IButton();
             Button=checkIButton.read_IDs();
-            check=data.CommandSelectAsListFrom("zuweisung, maschine", "WHERE iButton='"+Button+"' Bezeichung='" + cb_maschinen.Text+"'");
-            if (check.Count <= 1)
+            string test= "WHERE maschine.MaschinenID = zuweisung.MaschinenID AND zuweisung.iButtonID = '"+Button.Split(';')[0]+"' AND Bezeichnung = '"+cb_maschinen.Text+"' AND maschine.MaschinenID = '"+Button.Split(';')[1]+"'";
+            check =data.CommandSelectAsListFrom("zuweisung, maschine", "WHERE maschine.MaschinenID = zuweisung.MaschinenID AND zuweisung.iButtonID = '"+Button.Split(';')[0]+"' AND Bezeichnung = '"+cb_maschinen.Text+"' AND maschine.MaschinenID = '"+Button.Split(';')[1]+"'");
+            if (check.Count >= 1)
             {
-                MessageBox.Show("Sie sind für die Maschine berechtigt.");
+                MessageBox.Show("Sie sind für die Maschine berechtigt.","Berechtigt",MessageBoxButton.OK,MessageBoxImage.Information);
+            }
+            if (check.Count == 0)
+            {
+                MessageBox.Show("Sie sind für die Maschiene nicht berechtigt!","Nicht Berechtigt",MessageBoxButton.OK,MessageBoxImage.Error);
             }
         }
     }
