@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Database;
 
 namespace PL_TS
 {
@@ -19,6 +20,7 @@ namespace PL_TS
     /// </summary>
     public partial class addMaschine : Window
     {
+        Dbase data = new Dbase("localhost", "projektlabor", "root", "");
         public addMaschine()
         {
             InitializeComponent();
@@ -26,7 +28,14 @@ namespace PL_TS
 
         private void Add_Maschine_Click(object sender, RoutedEventArgs e)
         {
-
+            if (tbx_MaschinenID.Text != "" && tbx_Bezeichnung.Text != "")
+            {
+                data.CommandInsertInto("maschine", "MaschinenID, Bezeichnung", "'" + tbx_MaschinenID.Text + "','" + tbx_Bezeichnung.Text + "'");
+            }
+            else
+            {
+                MessageBox.Show("Bitte überprüfen Sie ihre Eingabe!");
+            }
         }
     }
 }

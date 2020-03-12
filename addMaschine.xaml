@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="addMaschine" Height="450" Width="800">
     <Grid>
-        
+        <Label x:Name="lbl_MaschinenID" Content="MaschinenID" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_Bezeichnung" Content="Bezeichnung" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbx_MaschinenID" HorizontalAlignment="Left" Height="23" Margin="10,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbx_Bezeichnung" HorizontalAlignment="Left" Height="23" Margin="200,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btn_add_Maschine" Content="Hinzufügen" HorizontalAlignment="Left" Margin="670,377,0,0" VerticalAlignment="Top" Width="112" Click="Add_Maschine_Click"/>
+
     </Grid>
 </Window>

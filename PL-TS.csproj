@@ -108,6 +108,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="addMaschine.xaml.cs">
+      <DependentUpon>addMaschine.xaml</DependentUpon>
+    </Compile>
     <Compile Include="add_Maker.xaml.cs">
       <DependentUpon>add_Maker.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,10 @@
     <Compile Include="Simulationxaml.xaml.cs">
       <DependentUpon>Simulationxaml.xaml</DependentUpon>
     </Compile>
+    <Page Include="addMaschine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="add_Maker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
