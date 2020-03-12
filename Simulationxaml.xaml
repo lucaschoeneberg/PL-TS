@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Simulationxaml" Height="308.648" Width="266.799">
     <Grid>
-        <Label x:Name="lbl_sim"  Content="Label" HorizontalAlignment="Left" Margin="22,131,0,0" VerticalAlignment="Top" Width="107"/>
+        <Label x:Name="lbl_sim"  Content="Maschiene auswählen" HorizontalAlignment="Left" Margin="22,131,0,0" VerticalAlignment="Top" Width="128"/>
         <Button x:Name="btn_check" Content="Button" HorizontalAlignment="Left" Margin="22,226,0,0" VerticalAlignment="Top" Width="67" Click="btn_check_Click" IsEnabled="False"/>
         <ComboBox x:Name="cb_maschinen" HorizontalAlignment="Left" Margin="22,155,0,0" VerticalAlignment="Top" Width="107"/>
         <Label x:Name="lbl_iButton" Content="iButton auslesen..." HorizontalAlignment="Left" Margin="22,93,0,0" VerticalAlignment="Top" Width="210"/>

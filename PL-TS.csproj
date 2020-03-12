@@ -113,6 +113,9 @@
     <Compile Include="edit_maker.xaml.cs">
       <DependentUpon>edit_maker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="maschine_zuweisen.xaml.cs">
+      <DependentUpon>maschine_zuweisen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Simulationxaml.xaml.cs">
       <DependentUpon>Simulationxaml.xaml</DependentUpon>
     </Compile>
@@ -138,6 +141,10 @@
       <DependentUpon>Main.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="maschine_zuweisen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PL_Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

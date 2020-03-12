@@ -85,5 +85,11 @@ namespace PL_TS
         {
 
         }
+
+        private void Btn_maschine_zuweisen_Click(object sender, RoutedEventArgs e)
+        {
+            maschine_zuweisen zuweisen = new maschine_zuweisen();
+            zuweisen.ShowDialog();
+        }
     }
 }

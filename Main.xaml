@@ -75,6 +75,7 @@
                     </DataGrid>
                     <Button x:Name="btn_add_maschine" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Content="Add" Height="35" Width="70" Click="btn_add_maschine_Click" Margin="5,5,0,0"/>
                     <Button x:Name="btn_test_maschine" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Content="Test" Height="35" Width="70" Click="btn_test_maschine_Click" Margin="80,5,0,0"/>
+                    <Button x:Name="btn_maschine_zuweisen" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Content="Zuweisen" Height="35" Width="95" Margin="155,5,0,0" Click="Btn_maschine_zuweisen_Click"/>
                 </Grid>
             </TabItem>
             <TabItem>
