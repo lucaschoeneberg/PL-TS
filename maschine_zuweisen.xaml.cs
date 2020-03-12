@@ -35,7 +35,7 @@ namespace PL_TS
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             string maschine=ChangeZuweisung(lBxMaschine, lBxZugewiesen);
-            data.CommandInsertInto("zuweisung", "iButtonID, MaschinenID, Datum", "'A4D2E21900EAA100','" + sucheMaschinenID(maschine) + "',CURRENT_DATE");
+            data.CommandInsertInto("zuweisung", "iButtonID, MaschinenID, Datum", "'"+lbl_iButton.Content+"','" + sucheMaschinenID(maschine) + "',CURRENT_DATE");
         }
         private string ChangeZuweisung(ListBox from, ListBox to)
         {
@@ -51,7 +51,7 @@ namespace PL_TS
         private void BtnRemove_Click(object sender, RoutedEventArgs e)
         {
             string maschine=ChangeZuweisung(lBxZugewiesen, lBxMaschine);
-            data.CommandDelete("zuweisung", "iButtonID='A4D2E21900EAA100' AND MaschinenID='" + sucheMaschinenID(maschine) + "'");
+            data.CommandDelete("zuweisung", "iButtonID='"+lbl_iButton.Content+"' AND MaschinenID='" + sucheMaschinenID(maschine) + "'");
         }
         private string sucheMaschinenID(string maschine)
         {
@@ -70,18 +70,18 @@ namespace PL_TS
 
         private void btn_changeIbutton_Click(object sender, RoutedEventArgs e)
         {
-            //btn_changeIbutton.IsEnabled = false;
-            //UpdateiButton();
+            btn_changeIbutton.IsEnabled = false;
+            UpdateiButton();
             lBxMaschine.Items.Clear();
             lBxZugewiesen.Items.Clear();
-            zugewiesen = data.CommandSelectAsListFrom("zuweisung, maschine", "WHERE maschine.MaschinenID=zuweisung.MaschinenID AND IButtonID='A4D2E21900EAA100'");
+            zugewiesen = data.CommandSelectAsListFrom("zuweisung, maschine", "WHERE maschine.MaschinenID=zuweisung.MaschinenID AND IButtonID='"+lbl_iButton.Content+"'");
             int x = 0;
             while (x < zugewiesen.Count)
             {
                 lBxZugewiesen.Items.Add(zugewiesen[x][4]);
                 x++;
             }
-            nichtzugewiesen = data.CommandSelectAsListFrom("maschine", "WHERE bezeichnung NOT IN(SELECT bezeichnung FROM zuweisung, maschine WHERE zuweisung.MaschinenID = maschine.MaschinenID AND iButtonID = 'A4D2E21900EAA100')");
+            nichtzugewiesen = data.CommandSelectAsListFrom("maschine", "WHERE bezeichnung NOT IN(SELECT bezeichnung FROM zuweisung, maschine WHERE zuweisung.MaschinenID = maschine.MaschinenID AND iButtonID = '"+lbl_iButton.Content+"')");
             x = 0;
             while (x < nichtzugewiesen.Count)
             {
