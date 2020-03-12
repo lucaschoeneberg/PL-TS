@@ -48,7 +48,6 @@ namespace PL_TS
         public bool dg_maker_update()
         {
             dg_maker.DataContext = data.CommandSelectAsDataSet("SELECT * FROM user;", "LoadDataBinding");
-            btn_add_maker.Content = btn_add_maker.Content + " Bearbeiten";
             return true;
         }
         public bool dg_maschine_update()
