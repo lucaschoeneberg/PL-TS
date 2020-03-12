@@ -211,6 +211,29 @@ namespace Database
         }
 
         /// <summary>
+        /// löscht Daten aus einer datenbank
+        /// </summary>
+        public bool CommandDelete(string table, string where)
+        {
+            try
+            {
+                connection.Close();
+                connection.Open();
+                string DeleteQuery = "DELETE FROM" + table + " WHERE " + where + ";";
+                MySqlCommand commandInsert = new MySqlCommand(DeleteQuery, connection);
+                commandInsert.ExecuteNonQuery();
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler bei 'Insert into'\n" + ex.Message, "Error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
         /// fügt Daten in eine Tabelle ein.
         /// </summary>
         /// <param name="table"> Name der Tabelle, in die eingefügt werden soll</param>
