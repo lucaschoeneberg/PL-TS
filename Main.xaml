@@ -6,9 +6,9 @@
         xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PL_TS"
-        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="PL_TS.Main"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Name="PL_MAIN" x:Class="PL_TS.Main"
         mc:Ignorable="d"
-        Title="Projektlabor - Control" Height="450" Width="800">
+        Title="Projektlabor - Control" Height="450" Width="800" Icon="apple-touch-icon.png" Closing="PL_MAIN_Closing">
     <Grid>
         <dragablz:TabablzControl>
             <dragablz:TabablzControl.InterTabController>
