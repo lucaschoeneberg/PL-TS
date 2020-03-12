@@ -1,20 +1,7 @@
 ﻿using System;
 using System.Data;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using MySql.Data.MySqlClient;
-using System.Configuration;
+using System.Windows.Threading;
 using Database;
 
 namespace PL_TS
@@ -46,8 +33,17 @@ namespace PL_TS
 
         }
 
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            dg_maker_update();
+        }
+
         private void dg_maschine_Loaded(object sender, RoutedEventArgs e)
         {
+            DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
+            dispatcherTimer.Start();
             string sql = "SELECT maschine.MaschinenID, Bezeichnung, GROUP_CONCAT(Vorname,' ',Nachname) as User, COUNT(Nachname) as Anzahl FROM maschine, zuweisung, user, ibutton WHERE user.iButtonID=ibutton.iButtonID AND ibutton.iButtonID=zuweisung.iButtonID AND zuweisung.MaschinenID=maschine.MaschinenID GROUP BY maschine.MaschinenID";
             dg_maschine.DataContext = data.CommandSelectAsDataSet(sql, "LoadDataBinding");
         }
@@ -90,6 +86,11 @@ namespace PL_TS
         {
             maschine_zuweisen zuweisen = new maschine_zuweisen();
             zuweisen.ShowDialog();
+        }
+
+        private void PL_MAIN_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
