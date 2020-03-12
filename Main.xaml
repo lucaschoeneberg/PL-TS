@@ -44,7 +44,7 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="btn_add_maker" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Content="Add" Height="35" Width="70" Click="btn_add_maker_Click" Margin="5,5,0,0"/>
+                    <Button x:Name="btn_add_maker" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Add" Height="35" Width="70" Click="btn_add_maker_Click" Margin="5,5,0,0"/>
                 </Grid>
             </TabItem>
             <TabItem Foreground="White">
