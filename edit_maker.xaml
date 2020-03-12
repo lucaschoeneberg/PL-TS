@@ -1,22 +1,22 @@
 ﻿<Window x:Class="PL_TS.edit_maker"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:local="clr-namespace:PL_TS"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:PL_TS"
         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="edit_maker" Height="339.96" Width="554.871">
     <Grid>
-        <TextBox x:Name="tbx_Vorname" HorizontalAlignment="Left" Height="23" Margin="18,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbx_Nachname" HorizontalAlignment="Left" Height="23" Margin="151,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbx_EMail" HorizontalAlignment="Left" Height="23" Margin="293,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <CheckBox x:Name="chb_Keymember" Content="Keymember" HorizontalAlignment="Left" Margin="437,56,0,0" VerticalAlignment="Top" Click="Chb_Keymember_Click" Checked="Chb_Keymember_Checked" Unchecked="Chb_Keymember_Unchecked"/>
+        <TextBox x:Name="tbx_Vorname" HorizontalAlignment="Left" Height="23" Margin="18,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="tbx_Vorname_TextChanged"/>
+        <TextBox x:Name="tbx_Nachname" HorizontalAlignment="Left" Height="23" Margin="151,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="tbx_Nachname_TextChanged"/>
+        <TextBox x:Name="tbx_EMail" HorizontalAlignment="Left" Height="23" Margin="293,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="tbx_EMail_TextChanged"/>
+        <CheckBox x:Name="chb_Keymember" Content="Keymember" HorizontalAlignment="Left" Margin="437,56,0,0" VerticalAlignment="Top" Checked="Chb_Keymember_Checked" Click="chb_Keymember_Click" Unchecked="Chb_Keymember_Unchecked"/>
         <Label x:Name="lbl_iButton" Content="iButton" HorizontalAlignment="Left" Margin="18,209,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbx_Benutzername" HorizontalAlignment="Left" Height="23" Margin="18,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
-        <PasswordBox  x:Name="tbx_password" materialDesign:HintAssist.Hint="Passwort..." Margin="151,118,521,268" Visibility="Hidden"/>
-        <PasswordBox x:Name="tbx_password_verify" materialDesign:HintAssist.Hint="Passwort..." Margin="276,118,396,268" Visibility="Hidden"/>
-        <Button x:Name="btn_updateMaker" Content="Maker Ändern&#xA;" HorizontalAlignment="Left" Margin="369,259,0,0" VerticalAlignment="Top" Width="153" Click="Btn_addMaker_Click"/>
+        <TextBox x:Name="tbx_Benutzername" HorizontalAlignment="Left" Height="23" Margin="18,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden" TextChanged="tbx_Benutzername_TextChanged"/>
+        <PasswordBox  x:Name="tbx_password" HorizontalAlignment="Left" Height="23" Width="120" Margin="151,128,0,0" VerticalAlignment="Top" Visibility="Hidden"  />
+        <PasswordBox x:Name="tbx_password_verify" HorizontalAlignment="Left" Height="23" Width="120" VerticalAlignment="Top" Margin="293,128,0,0" PasswordChanged="tbx_password_verify_PasswordChanged" Visibility="Hidden" />
+        <Button x:Name="btn_updateMaker" Content="Maker Ändern&#xA;" HorizontalAlignment="Left" Margin="369,259,0,0" VerticalAlignment="Top" Width="153" Click="Btn_updateMaker_Click" IsEnabled="False"/>
         <Label x:Name="lbl_Vorname" Content="Vorname" HorizontalAlignment="Left" Margin="18,27,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_Nachname" Content="Nachname" HorizontalAlignment="Left" Margin="151,27,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lbl_EMail" Content="E-Mail" HorizontalAlignment="Left" Margin="293,27,0,0" VerticalAlignment="Top"/>
