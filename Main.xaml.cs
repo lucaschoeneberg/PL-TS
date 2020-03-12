@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using Database;
 
 namespace PL_TS
 {
@@ -23,6 +24,7 @@ namespace PL_TS
     /// </summary>
     public partial class Main : Window
     {
+        Dbase data = new Dbase("localhost", "projektlabor", "root", "");
         public Main()
         {
             InitializeComponent();
@@ -34,14 +36,7 @@ namespace PL_TS
         }
         public bool dg_maker_update()
         {
-            string sql = "SELECT * FROM user;";
-
-            MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-            MySqlCommand cmdSel = new MySqlCommand(sql, connection);
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmdSel);
-            DataSet ds = new DataSet();
-            adp.Fill(ds, "LoadDataBinding");
-            dg_maker.DataContext = ds;
+            dg_maker.DataContext = data.CommandSelectAsDataSet("SELECT * FROM user;", "LoadDataBinding");
             btn_add_maker.Content = btn_add_maker.Content + " Bearbeiten";
             return true;
         }
@@ -54,13 +49,7 @@ namespace PL_TS
         private void dg_maschine_Loaded(object sender, RoutedEventArgs e)
         {
             string sql = "SELECT maschine.MaschinenID, Bezeichnung, GROUP_CONCAT(Vorname,' ',Nachname) as User, COUNT(Nachname) as Anzahl FROM maschine, zuweisung, user, ibutton WHERE user.iButtonID=ibutton.iButtonID AND ibutton.iButtonID=zuweisung.iButtonID AND zuweisung.MaschinenID=maschine.MaschinenID GROUP BY maschine.MaschinenID";
-
-            MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-            MySqlCommand cmdSel = new MySqlCommand(sql, connection);
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmdSel);
-            DataSet ds = new DataSet();
-            adp.Fill(ds, "LoadDataBinding");
-            dg_maschine.DataContext = ds;
+            dg_maschine.DataContext = data.CommandSelectAsDataSet(sql, "LoadDataBinding");
         }
 
         private void dg_maschine_Unloaded(object sender, RoutedEventArgs e)
