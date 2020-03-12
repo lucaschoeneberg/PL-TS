@@ -45,6 +45,7 @@ namespace PL_TS
         {
             dg_maker_update();
         }
+
         public bool dg_maker_update()
         {
             dg_maker.DataContext = data.CommandSelectAsDataSet("SELECT * FROM user;", "LoadDataBinding");
@@ -106,6 +107,16 @@ namespace PL_TS
         private void btn_maker_delete_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+        private void btn_maker_maschine_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView rowview = dg_maker.SelectedItem as DataRowView;
+            maschine_zuweisen maschine_makerOpen = new maschine_zuweisen(true, Convert.ToInt32(rowview.Row[0].ToString()));
+            ApplyEffect(this);
+            maschine_makerOpen.ShowDialog();
+            dg_maker_update();
+            dg_maschine_update();
+            ClearEffect(this);
         }
 
         private void Btn_maschine_zuweisen_Click(object sender, RoutedEventArgs e)
