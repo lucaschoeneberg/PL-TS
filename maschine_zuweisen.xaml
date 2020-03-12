@@ -11,8 +11,9 @@
         <ListBox x:Name="lBxZugewiesen" HorizontalAlignment="Left" Height="145" Margin="267,10,0,0" VerticalAlignment="Top" Width="192"/>
         <Button x:Name="btnAdd" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="207,45,0,0" VerticalAlignment="Top" Width="55" Click="BtnAdd_Click"/>
         <Button x:Name="btnRemove" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="207,82,0,0" VerticalAlignment="Top" Width="55" Click="BtnRemove_Click"/>
-        <Label x:Name="lbl_iButton" Content="iButton" HorizontalAlignment="Left" Margin="18,209,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_iButton" Content="iButtonID" HorizontalAlignment="Left" Margin="18,209,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="cbx_com" SelectionChanged="cbx_com_Changed" Loaded="cbx_com_Loaded" HorizontalAlignment="Left" Margin="129,238,0,0" VerticalAlignment="Top" Width="99" Height="32" DropDownOpened="cbx_com_DropDownOpened"/>
-        <Button x:Name="btn_changeIbutton" Click="btn_changeIbutton_Click" Content="Change" HorizontalAlignment="Left" Margin="18,238,0,0" VerticalAlignment="Top" Width="106" />
+        <Button x:Name="btn_changeIbutton" Click="btn_changeIbutton_Click" Content="Change" HorizontalAlignment="Left" Margin="18,238,0,0" VerticalAlignment="Top" Width="106" IsEnabled="False" />
+        <Label x:Name="lbl_Makername" Content="Name" HorizontalAlignment="Left" Margin="129,209,0,0" VerticalAlignment="Top" Width="385"/>
     </Grid>
 </Window>
