@@ -26,6 +26,7 @@ namespace PL_TS
         Dbase data = new Dbase("localhost", "projektlabor", "root", "");
         List<string[]> zugewiesen = new List<string[]>();
         List<string[]> nichtzugewiesen = new List<string[]>();
+        List<string[]> Makersname = new List<string[]>();
         string COM;
         public maschine_zuweisen()
         {
@@ -70,8 +71,8 @@ namespace PL_TS
 
         private void btn_changeIbutton_Click(object sender, RoutedEventArgs e)
         {
-            btn_changeIbutton.IsEnabled = false;
-            UpdateiButton();
+            //btn_changeIbutton.IsEnabled = false;
+            //UpdateiButton();
             lBxMaschine.Items.Clear();
             lBxZugewiesen.Items.Clear();
             zugewiesen = data.CommandSelectAsListFrom("zuweisung, maschine", "WHERE maschine.MaschinenID=zuweisung.MaschinenID AND IButtonID='"+lbl_iButton.Content+"'");
@@ -88,6 +89,8 @@ namespace PL_TS
                 lBxMaschine.Items.Add(nichtzugewiesen[x][1]);
                 x++;
             }
+            Makersname= data.CommandSelectAsListFrom("user", "WHERE iButtonID='" + lbl_iButton.Content + "'");
+            lbl_Makername.Content = Makersname[0][1] + " " + Makersname[0][2];
         }
         private void cbx_com_DropDownOpened(object sender, EventArgs e)
         {
