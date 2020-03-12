@@ -79,7 +79,8 @@ namespace PL_TS
 
         private void btn_add_maschine_Click(object sender, RoutedEventArgs e)
         {
-
+            addMaschine addMaschineOpen = new addMaschine();
+            addMaschineOpen.ShowDialog();
         }
 
         private void btn_test_maschine_Click(object sender, RoutedEventArgs e)
