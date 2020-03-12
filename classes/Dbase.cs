@@ -81,12 +81,8 @@ namespace Database
         }
 
         /// <summary>
-        /// gibt die Daten einer Tabelle als Liste von String-Arrays zurück.
-        /// Jeder Listeneintrag liefert einen Datensatz der Tabelle als String-Array.
-        /// Jedes String-Array enthält die Daten der jeweiligen Spalten der Tabelle.
+        /// gibt die Daten einer Tabelle als DataSet zurück.
         /// </summary>
-        /// <param name="table">Name der Tabelle, dessen Spalten ermittelt werden sollen</param>
-        /// <returns>Liste der Datenzeilen mit Spaltendaten im String-Array</returns>
         public DataSet CommandSelectAsDataSet(string sql,string binding)
         {
             DataSet ds = new DataSet();
