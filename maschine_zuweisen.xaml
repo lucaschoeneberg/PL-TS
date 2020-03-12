@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL_TS"
         mc:Ignorable="d"
-        Title="maschine_zuweisen" Height="450" Width="800">
+        Title="maschine_zuweisen" Height="450" Width="800" Icon="apple-touch-icon.png">
     <Grid>
         <ListBox x:Name="lBxMaschine" HorizontalAlignment="Left" Height="145" Margin="10,10,0,0" VerticalAlignment="Top" Width="192" Background="#FFB62E2E"/>
         <ListBox x:Name="lBxZugewiesen" HorizontalAlignment="Left" Height="145" Margin="267,10,0,0" VerticalAlignment="Top" Width="192" Background="#FFCB3333"/>
