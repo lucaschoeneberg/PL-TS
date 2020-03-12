@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Input;
 using Database;
-
 namespace PL_TS
 {
     /// <summary>
@@ -10,17 +9,17 @@ namespace PL_TS
     /// </summary>
     public partial class PL_Login : Window
     {
-        Dbase data = new Dbase("localhost","Projektlabor", "root", "");
+        Dbase data = new Dbase("localhost", "Projektlabor", "root", "");
         public PL_Login()
-        { 
+        {
             InitializeComponent();
         }
 
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
             List<string[]> Logindaten = new List<string[]>();
-            Logindaten = data.CommandSelectAsListFrom("user"," WHERE E_Mail='"+tbx_username.Text+"' OR Benutzername='"+tbx_username.Text+"'");
-            if(Logindaten.Count!=0)
+            Logindaten = data.CommandSelectAsListFrom("user", " WHERE E_Mail='" + tbx_username.Text + "' OR Benutzername='" + tbx_username.Text + "'");
+            if (Logindaten.Count != 0)
             {
                 if ((tbx_username.Text == Logindaten[0][3] || tbx_username.Text == Logindaten[0][5]) && BCrypt.Net.BCrypt.Verify(tbx_password.Password, Logindaten[0][6]))
                 {
@@ -39,6 +38,14 @@ namespace PL_TS
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
+        }
+
+        private void tbx_password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btn_login_Click(this, new RoutedEventArgs());
+            }
         }
     }
 }
