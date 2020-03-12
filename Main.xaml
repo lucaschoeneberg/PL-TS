@@ -14,14 +14,14 @@
             <dragablz:TabablzControl.InterTabController>
                 <dragablz:InterTabController />
             </dragablz:TabablzControl.InterTabController>
-            <TabItem>
-                <TabItem.Header>
+            <TabItem Foreground="White">
+                <TabItem.Header >
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Maker" />
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
-                    <DataGrid CanUserAddRows="False" AutoGenerateColumns="False" x:Name="dg_maker" Loaded="dg_maker_Loaded" Unloaded="dg_maker_Unloaded" Margin="0,40,0,0" ItemsSource="{Binding LoadDataBinding}">
+                    <DataGrid CanUserAddRows="False" AutoGenerateColumns="False" x:Name="dg_maker" Loaded="dg_maker_Loaded" Margin="0,40,0,0" ItemsSource="{Binding LoadDataBinding}">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="DGTC_USERID" Width="*" Binding="{Binding UserID}" Header="User Id" IsReadOnly="True"/>
                             <DataGridTextColumn Width="*" Binding="{Binding Vorname}" Header="Vorname" IsReadOnly="True"/>
@@ -47,14 +47,14 @@
                     <Button x:Name="btn_add_maker" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Content="Add" Height="35" Width="70" Click="btn_add_maker_Click" Margin="5,5,0,0"/>
                 </Grid>
             </TabItem>
-            <TabItem>
+            <TabItem Foreground="White">
                 <TabItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Maschinen"/>
                     </StackPanel>
                 </TabItem.Header>
                 <Grid>
-                    <DataGrid CanUserAddRows="False" AutoGenerateColumns="False" x:Name="dg_maschine" Loaded="dg_maschine_Loaded" Unloaded="dg_maschine_Unloaded" Margin="0,40,0,0" ItemsSource="{Binding LoadDataBinding}">
+                    <DataGrid CanUserAddRows="False" AutoGenerateColumns="False" x:Name="dg_maschine" Loaded="dg_maschine_Loaded" Margin="0,40,0,0" ItemsSource="{Binding LoadDataBinding}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="*" Binding="{Binding Bezeichnung}" Header="Maschine" IsReadOnly="True"/>
                             <DataGridTextColumn Width="*" Binding="{Binding User}" Header="User" IsReadOnly="True"/>
@@ -77,13 +77,6 @@
                     <Button x:Name="btn_test_maschine" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Content="Test" Height="35" Width="70" Click="btn_test_maschine_Click" Margin="80,5,0,0"/>
                     <Button x:Name="btn_maschine_zuweisen" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Content="Zuweisen" Height="35" Width="95" Margin="155,5,0,0" Click="Btn_maschine_zuweisen_Click"/>
                 </Grid>
-            </TabItem>
-            <TabItem>
-                <TabItem.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Key-Member" />
-                    </StackPanel>
-                </TabItem.Header>
             </TabItem>
         </dragablz:TabablzControl>
     </Grid>
