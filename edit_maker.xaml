@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="edit_maker" Height="339.96" Width="554.871">
+        Title="edit_maker" Height="339.96" Width="554.871" Icon="apple-touch-icon.png">
     <Grid>
         <TextBox x:Name="tbx_Vorname" HorizontalAlignment="Left" Height="23" Margin="18,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="tbx_Vorname_TextChanged"/>
         <TextBox x:Name="tbx_Nachname" HorizontalAlignment="Left" Height="23" Margin="151,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="tbx_Nachname_TextChanged"/>
