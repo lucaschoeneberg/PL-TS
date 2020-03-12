@@ -31,15 +31,15 @@ namespace PL_TS
             if (Userdata[0][4] == "True")
             {
                 chb_Keymember.IsChecked = true;
-                tbx_Benutzername.Text = Userdata[0][5];
-                password = Userdata[0][6];
-                tbx_password.Password = Userdata[0][6];
-                tbx_password_verify.Password = Userdata[0][6];
             }
             else
             {
                 chb_Keymember.IsChecked = false;
             }
+            tbx_Benutzername.Text = Userdata[0][5];
+            password = Userdata[0][6];
+            tbx_password.Password = Userdata[0][6];
+            tbx_password_verify.Password = Userdata[0][6];
         }
 
 
