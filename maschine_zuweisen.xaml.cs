@@ -23,31 +23,42 @@ namespace PL_TS
     /// </summary>
     public partial class maschine_zuweisen : Window
     {
+        Dbase data = new Dbase("localhost", "projektlabor", "root", "");
+        List<string[]> zugewiesen = new List<string[]>();
+        List<string[]> nichtzugewiesen = new List<string[]>();
+        string COM;
         public maschine_zuweisen()
         {
             InitializeComponent();
         }
 
-
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            ChangeZuweisung(lBxMaschine, lBxZugewiesen);
+            string maschine=ChangeZuweisung(lBxMaschine, lBxZugewiesen);
+            data.CommandInsertInto("zuweisung", "iButtonID, MaschinenID, Datum", "'A4D2E21900EAA100','" + sucheMaschinenID(maschine) + "',CURRENT_DATE");
         }
-        private void ChangeZuweisung(ListBox from, ListBox to)
+        private string ChangeZuweisung(ListBox from, ListBox to)
         {
             var selected = from.SelectedItem;
-            if (selected is null) return;
+            //if (selected is null) return;
             int index = from.SelectedIndex;
             from.Items.RemoveAt(index);
             to.Items.Add(selected);
             if (index >= from.Items.Count) index--;
             from.SelectedIndex = index;
+            return selected.ToString();
         }
         private void BtnRemove_Click(object sender, RoutedEventArgs e)
         {
-            ChangeZuweisung(lBxZugewiesen, lBxMaschine);
+            string maschine=ChangeZuweisung(lBxZugewiesen, lBxMaschine);
+            data.CommandDelete("zuweisung", "iButtonID='A4D2E21900EAA100' AND MaschinenID='" + sucheMaschinenID(maschine) + "'");
         }
-
+        private string sucheMaschinenID(string maschine)
+        {
+            List<string[]> ID = new List<string[]>();
+            ID = data.CommandSelectAsListFrom("maschine", "WHERE bezeichnung='" + maschine + "'");
+            return ID[0][0];
+        }
         private void cbx_com_Loaded(object sender, RoutedEventArgs e)
         {
             string[] ports = SerialPort.GetPortNames();
@@ -59,10 +70,25 @@ namespace PL_TS
 
         private void btn_changeIbutton_Click(object sender, RoutedEventArgs e)
         {
-            btn_changeIbutton.IsEnabled = false;
-            UpdateiButton();
+            //btn_changeIbutton.IsEnabled = false;
+            //UpdateiButton();
+            lBxMaschine.Items.Clear();
+            lBxZugewiesen.Items.Clear();
+            zugewiesen = data.CommandSelectAsListFrom("zuweisung, maschine", "WHERE maschine.MaschinenID=zuweisung.MaschinenID AND IButtonID='A4D2E21900EAA100'");
+            int x = 0;
+            while (x < zugewiesen.Count)
+            {
+                lBxZugewiesen.Items.Add(zugewiesen[x][4]);
+                x++;
+            }
+            nichtzugewiesen = data.CommandSelectAsListFrom("maschine", "WHERE bezeichnung NOT IN(SELECT bezeichnung FROM zuweisung, maschine WHERE zuweisung.MaschinenID = maschine.MaschinenID AND iButtonID = 'A4D2E21900EAA100')");
+            x = 0;
+            while (x < nichtzugewiesen.Count)
+            {
+                lBxMaschine.Items.Add(nichtzugewiesen[x][1]);
+                x++;
+            }
         }
-
         private void cbx_com_DropDownOpened(object sender, EventArgs e)
         {
             cbx_com.Items.Clear();
@@ -84,7 +110,6 @@ namespace PL_TS
             Thread thread = new Thread(UpdateiButton_Thread);
             thread.Start();
         }
-        string COM;
         private void UpdateiButton_Thread()
         {
             string IButton;
