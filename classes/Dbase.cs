@@ -1,17 +1,7 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 
 namespace Database
@@ -90,6 +80,33 @@ namespace Database
             return rowList;
         }
 
+        /// <summary>
+        /// gibt die Daten einer Tabelle als Liste von String-Arrays zurück.
+        /// Jeder Listeneintrag liefert einen Datensatz der Tabelle als String-Array.
+        /// Jedes String-Array enthält die Daten der jeweiligen Spalten der Tabelle.
+        /// </summary>
+        /// <param name="table">Name der Tabelle, dessen Spalten ermittelt werden sollen</param>
+        /// <returns>Liste der Datenzeilen mit Spaltendaten im String-Array</returns>
+        public DataSet CommandSelectAsDataSet(string sql,string binding)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                connection.Open();
+                command = connection.CreateCommand();
+                command.CommandText = sql;
+                MySqlDataAdapter adp = new MySqlDataAdapter(command);
+                adp.Fill(ds, binding);
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                connection.Close();
+                MessageBox.Show("Fehler bei 'Select' List\n" + ex.Message, "Error",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return ds;
+        }
 
         /// <summary>
         /// gibt die Daten einer Tabelle als Liste von String-Arrays zurück.
