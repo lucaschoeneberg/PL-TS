@@ -36,6 +36,7 @@
                                         <Menu>
                                             <MenuItem Header="Action">
                                                 <MenuItem x:Name="btn_maker_edit" Click="btn_maker_edit_Click" Header="Bearbeiten" />
+                                                <MenuItem x:Name="btn_maker_maschine" Click="btn_maker_maschine_Click" Header="Maschine zuweisen" />
                                                 <MenuItem x:Name="btn_maker_delete"  Click="btn_maker_delete_Click" Header="Löschen" />
                                             </MenuItem>
                                         </Menu>
