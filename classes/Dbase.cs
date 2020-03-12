@@ -219,7 +219,7 @@ namespace Database
             {
                 connection.Close();
                 connection.Open();
-                string DeleteQuery = "DELETE FROM" + table + " WHERE " + where + ";";
+                string DeleteQuery = "DELETE FROM " + table + " WHERE " + where + ";";
                 MySqlCommand commandInsert = new MySqlCommand(DeleteQuery, connection);
                 commandInsert.ExecuteNonQuery();
                 connection.Close();
