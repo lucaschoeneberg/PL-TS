@@ -71,7 +71,7 @@ namespace PL_TS
             IButton readButton = new IButton();
             Thread.Sleep(TimeSpan.FromSeconds(1));
             string IButton = readButton.read_IDs(COM, 115200);
-            lbl_iButton.Dispatcher.Invoke(new Action(() => lbl_iButton.Content = IButton));
+            tbx_iButton.Dispatcher.Invoke(new Action(() => tbx_iButton.Text = IButton));
             btn_changeIbutton.Dispatcher.Invoke(new Action(() => btn_changeIbutton.IsEnabled = true));
         }
         private void UpdateiButton()
@@ -84,7 +84,7 @@ namespace PL_TS
         private void cbx_com_Changed(object sender, RoutedEventArgs e)
         {
             UpdateiButton();
-            if (COM != "") btn_changeIbutton.IsEnabled = true; else lbl_iButton.Content = false;
+            if (COM != "") btn_changeIbutton.IsEnabled = true; else tbx_iButton.Text = "false";
         }
 
         private void Btn_addMaker_Click(object sender, RoutedEventArgs e)
@@ -93,22 +93,23 @@ namespace PL_TS
             {
                 IButton readButton = new IButton();
                 Dbase data = new Dbase("localhost", "projektlabor", "root", "");
-                string ID = readButton.read_IDs(cbx_com.SelectedItem.ToString(), 115000);
-                lbl_iButton.Content = ID.Split(';')[0];
-                data.CommandInsertInto("ibutton", "iButtonID, Typ", "'" + ID.Split(';')[0] + "','DS1990A'");//Einfügen eines nicht vorhandenen iButtons
+
+                data.CommandInsertInto("ibutton", "iButtonID, Typ", "'" + tbx_iButton.Text.Split(';')[0] + "','DS1990A'");//Einfügen eines nicht vorhandenen iButtons
                 if (chb_Keymember.IsChecked == true)
                 {
                     if (tbx_Benutzername.Text != "" || tbx_password.Password != "" || tbx_password_verify.Password != "" && tbx_password.Password == tbx_password_verify.Password)
                     {
-                        data.CommandInsertInto("user", "Vorname, Nachname, E_Mail, Keymember, Benutzername, Passwort, iButtonID", "'" + tbx_Vorname.Text + "','" + tbx_Nachname.Text + "','" + tbx_EMail.Text + "'," + 1 + ",'" + tbx_Benutzername.Text + "','" + tbx_password.Password + "','" + ID.Split(';')[0] + "'"); //Einfügen eines Keymembers
+                        data.CommandInsertInto("user", "Vorname, Nachname, E_Mail, Keymember, Benutzername, Passwort, iButtonID", "'" + tbx_Vorname.Text + "','" + tbx_Nachname.Text + "','" + tbx_EMail.Text + "'," + 1 + ",'" + tbx_Benutzername.Text + "','" + tbx_password.Password + "','" + tbx_iButton.ToString().Split(';')[0] + "'"); //Einfügen eines Keymembers
+                        this.Close();
                     }
+
                 }
                 else
                 {
-                    data.CommandInsertInto("user", "Vorname, Nachname, E_Mail, Keymember, iButtonID", "'" + tbx_Vorname.Text + "','" + tbx_Nachname.Text + "','" + tbx_EMail.Text + "'," + 0 + ",'" + ID.Split(';')[0] + "'"); //Einfügen eines normalen Makers
-
+                    data.CommandInsertInto("user", "Vorname, Nachname, E_Mail, Keymember, iButtonID", "'" + tbx_Vorname.Text + "','" + tbx_Nachname.Text + "','" + tbx_EMail.Text + "'," + 0 + ",'" + tbx_iButton.Text.Split(';')[0] + "'"); //Einfügen eines normalen Makers
+                    this.Close();
                 }
-            }
+            }-
         }
         private void cbx_com_DropDownOpened(object sender, EventArgs e)
         {
@@ -123,7 +124,7 @@ namespace PL_TS
         {
             if (chb_Keymember.IsChecked == true)
             {
-                if (tbx_Vorname.Text != "" && tbx_Vorname.Text != "" && tbx_Nachname.Text != "" && tbx_Benutzername.Text != "")
+                if (tbx_Vorname.Text != "" && tbx_Vorname.Text != "" && tbx_Nachname.Text != "" && tbx_Benutzername.Text != "" && tbx_iButton.Text != "")
                 {
                     if (tbx_password_verify.Password.Length <= 8)
                     {
@@ -140,7 +141,7 @@ namespace PL_TS
             }
             else
             {
-                if (tbx_EMail.Text != "" && tbx_Vorname.Text != "" && tbx_Nachname.Text != "")
+                if (tbx_EMail.Text != "" && tbx_Vorname.Text != "" && tbx_Nachname.Text != "" && tbx_iButton.Text != "")
                     btn_addMaker.IsEnabled = true;
                 else
                     btn_addMaker.IsEnabled = false;
@@ -172,6 +173,11 @@ namespace PL_TS
         }
 
         private void chb_Keymember_Click(object sender, RoutedEventArgs e)
+        {
+            check_fill();
+        }
+
+        private void tbx_iButton_TextChanged(object sender, TextChangedEventArgs e)
         {
             check_fill();
         }
