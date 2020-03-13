@@ -90,18 +90,25 @@ namespace PL_TS
 
         private void btn_check_Click(object sender, RoutedEventArgs e)
         {
-            List<string[]> check = new List<string[]>();
-            string Button;
-            Button= lbl_iButton.Content.ToString(); //iButtonID wird aus dem Label entnommen
-            check =data.CommandSelectAsListFrom("zuweisung, maschine", "WHERE maschine.MaschinenID = zuweisung.MaschinenID AND zuweisung.iButtonID = '"+Button.Split(';')[0]+"' AND Bezeichnung = '"+cb_maschinen.Text+"' AND maschine.MaschinenID = '"+Button.Split(';')[1]+"'"); //Überprüfung der Zuweisung
-            if (check.Count >= 1)
+            try
             {
-                data.CommandInsertInto("log", "iButtonID, MaschinenID, Starttime, Endtime", "'" + lbl_iButton.Content + "','" + Button.Split(';')[1] + "',CURRENT_TIMESTAMP,NUll"); //Einfügen eines Log Eintrages (Beginn der Nutzung der Maschine)
-                MessageBox.Show("Die Simulation der Maschine startet.","Start der Simulation",MessageBoxButton.OK,MessageBoxImage.Information); //Nutzung wird mit einer MessageBox gemeldet
+                List<string[]> check = new List<string[]>();
+                string Button;
+                Button = lbl_iButton.Content.ToString(); //iButtonID wird aus dem Label entnommen
+                check = data.CommandSelectAsListFrom("zuweisung, maschine", "WHERE maschine.MaschinenID = zuweisung.MaschinenID AND zuweisung.iButtonID = '" + Button.Split(';')[0] + "' AND Bezeichnung = '" + cb_maschinen.Text + "' AND maschine.MaschinenID = '" + Button.Split(';')[1] + "'"); //Überprüfung der Zuweisung
+                if (check.Count >= 1)
+                {
+                    data.CommandInsertInto("log", "iButtonID, MaschinenID, Starttime, Endtime", "'" + lbl_iButton.Content + "','" + Button.Split(';')[1] + "',CURRENT_TIMESTAMP,NUll"); //Einfügen eines Log Eintrages (Beginn der Nutzung der Maschine)
+                    MessageBox.Show("Die Simulation der Maschine startet.", "Start der Simulation", MessageBoxButton.OK, MessageBoxImage.Information); //Nutzung wird mit einer MessageBox gemeldet
+                }
+                if (check.Count == 0)
+                {
+                    MessageBox.Show("Sie sind für die Maschiene nicht berechtigt!", "Nicht Berechtigt", MessageBoxButton.OK, MessageBoxImage.Error); //Zuweisung nicht korrekt
+                }
             }
-            if (check.Count == 0)
+            catch
             {
-                MessageBox.Show("Sie sind für die Maschiene nicht berechtigt!","Nicht Berechtigt",MessageBoxButton.OK,MessageBoxImage.Error); //Zuweisung nicht korrekt
+                MessageBox.Show("Bitte Überprüfen Sie ihre Eingaben.");
             }
         }
 
