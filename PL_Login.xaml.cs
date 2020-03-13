@@ -35,13 +35,13 @@ namespace PL_TS
                 MessageBox.Show("Password und Benutzername eingeben!");
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e) // Bewegen des Login Fensters durch Mausklick
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
 
-        private void tbx_password_KeyDown(object sender, KeyEventArgs e)
+        private void tbx_password_KeyDown(object sender, KeyEventArgs e)// Login Enter Event
         {
             if (e.Key == Key.Enter)
             {
