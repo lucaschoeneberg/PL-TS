@@ -18,12 +18,12 @@ namespace PL_TS
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
             List<string[]> Logindaten = new List<string[]>();
-            Logindaten = data.CommandSelectAsListFrom("user", " WHERE E_Mail='" + tbx_username.Text + "' OR Benutzername='" + tbx_username.Text + "'");
+            Logindaten = data.CommandSelectAsListFrom("user", " WHERE E_Mail='" + tbx_username.Text + "' OR Benutzername='" + tbx_username.Text + "'"); //Anmeldung über die E-Mail und dem Benutzernamen möglich
             if (Logindaten.Count != 0)
-                if (Logindaten[0][4] == "True")
-                    if ((tbx_username.Text == Logindaten[0][3] || tbx_username.Text == Logindaten[0][5]) && BCrypt.Net.BCrypt.Verify(tbx_password.Password, Logindaten[0][6]))
+                if (Logindaten[0][4] == "True")//Muss ein Keymebmer sein
+                    if ((tbx_username.Text == Logindaten[0][3] || tbx_username.Text == Logindaten[0][5]) && BCrypt.Net.BCrypt.Verify(tbx_password.Password, Logindaten[0][6]))//Passwortverschlüsselung
                     {
-                        Main openMain = new Main();
+                        Main openMain = new Main(); //Öffen des AdminPanels
                         this.Visibility = Visibility.Hidden;
                         openMain.ShowDialog();
                     }
