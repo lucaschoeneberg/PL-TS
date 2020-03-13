@@ -48,5 +48,10 @@ namespace PL_TS
                 btn_login_Click(this, new RoutedEventArgs());
             }
         }
+
+        private void btn_close_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown(); //Schließen der kompletten Aplication
+        }
     }
 }
