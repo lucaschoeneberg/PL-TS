@@ -122,7 +122,7 @@ namespace PL_TS
 
         private void Btn_maschine_zuweisen_Click(object sender, RoutedEventArgs e)
         {
-            maschine_zuweisen zuweisen = new maschine_zuweisen(); 
+            maschine_zuweisen zuweisen = new maschine_zuweisen(false,-1); 
             ApplyEffect(this);
             zuweisen.ShowDialog();
             dg_maker_update();
