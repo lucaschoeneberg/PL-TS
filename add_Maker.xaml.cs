@@ -109,7 +109,7 @@ namespace PL_TS
                     data.CommandInsertInto("user", "Vorname, Nachname, E_Mail, Keymember, iButtonID", "'" + tbx_Vorname.Text + "','" + tbx_Nachname.Text + "','" + tbx_EMail.Text + "'," + 0 + ",'" + tbx_iButton.Text.Split(';')[0] + "'"); //Einfügen eines normalen Makers
                     this.Close();
                 }
-            }-
+            }
         }
         private void cbx_com_DropDownOpened(object sender, EventArgs e)
         {
