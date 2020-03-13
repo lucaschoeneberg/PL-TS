@@ -79,6 +79,24 @@
                     <Button x:Name="btn_maschine_zuweisen" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Content="Zuweisen" Height="35" Width="95" Margin="155,5,0,0" Click="Btn_maschine_zuweisen_Click"/>
                 </Grid>
             </TabItem>
+            <TabItem Foreground="White">
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Loging"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid>
+                    <DataGrid CanUserAddRows="False" AutoGenerateColumns="False" x:Name="dg_log" Loaded="dg_log_Loaded" Margin="0,0,0,0" ItemsSource="{Binding LoadDataBinding}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="*" Binding="{Binding Bezeichnung}" Header="Maschine" IsReadOnly="True"/>
+                            <DataGridTextColumn Width="*" Binding="{Binding Vorname}" Header="Vorname" IsReadOnly="True"/>
+                            <DataGridTextColumn Width="*" Binding="{Binding Nachname}" Header="Nachname" IsReadOnly="True"/>
+                            <DataGridTextColumn Width="*" Binding="{Binding Starttime}" Header="Start Zeit" IsReadOnly="True"/>
+                            <DataGridTextColumn Width="*" Binding="{Binding Endtime}" Header="End Zeit" IsReadOnly="True"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
         </dragablz:TabablzControl>
     </Grid>
 </Window>
