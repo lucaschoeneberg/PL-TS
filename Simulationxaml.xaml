@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL_TS"
         mc:Ignorable="d"
-        Title="Simulationxaml" Height="308.648" Width="266.799">
+        Title="Simulation" Height="348.827" Width="723.687">
     <Grid>
-        <Label x:Name="lbl_sim"  Content="Maschiene auswählen" HorizontalAlignment="Left" Margin="22,131,0,0" VerticalAlignment="Top" Width="128"/>
-        <Button x:Name="btn_check" Content="Button" HorizontalAlignment="Left" Margin="22,226,0,0" VerticalAlignment="Top" Width="67" Click="btn_check_Click" IsEnabled="False"/>
+        <Label x:Name="lbl_start_simulation"  Content="Simulation starten" HorizontalAlignment="Left" Margin="22,131,0,0" VerticalAlignment="Top" Width="128"/>
+        <Button x:Name="btn_check" Content="Start" HorizontalAlignment="Left" Margin="22,226,0,0" VerticalAlignment="Top" Width="78" Click="btn_check_Click" IsEnabled="False"/>
         <ComboBox x:Name="cb_maschinen" HorizontalAlignment="Left" Margin="22,155,0,0" VerticalAlignment="Top" Width="107"/>
         <Label x:Name="lbl_iButton" Content="iButton auslesen..." HorizontalAlignment="Left" Margin="22,93,0,0" VerticalAlignment="Top" Width="210"/>
         <ComboBox x:Name="cbx_com" SelectionChanged="cbx_com_Changed" Loaded="cbx_com_Loaded" HorizontalAlignment="Left" Margin="133,56,0,0" VerticalAlignment="Top" Width="99" Height="32" DropDownOpened="cbx_com_DropDownOpened"/>
         <Button x:Name="btn_changeIbutton" Click="btn_changeIbutton_Click" Content="Change" HorizontalAlignment="Left" Margin="22,56,0,0" VerticalAlignment="Top" Width="106" IsEnabled="False" />
+        <Label x:Name="lbl_rückgabeMaschine" Content="Simulation beenden" HorizontalAlignment="Left" Margin="221,131,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cb_endSim" HorizontalAlignment="Left" Margin="221,160,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btn_end" Content="Ende" HorizontalAlignment="Left" Margin="221,226,0,0" VerticalAlignment="Top" Width="75" Click="Btn_end_Click"/>
     </Grid>
 </Window>

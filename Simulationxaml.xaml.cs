@@ -14,15 +14,16 @@ namespace PL_TS
     public partial class Simulationxaml : Window
     {
         Dbase data = new Dbase("localhost","Projektlabor", "root", "");
-        List<string[]> Maschienen = new List<string[]>();
+        List<string[]> Maschine = new List<string[]>();
+        List<string[]> benutzteMaschine = new List<string[]>();
         public Simulationxaml()
         {
             InitializeComponent();
-            Maschienen = data.CommandSelectAsListFrom("maschine");
+            Maschine = data.CommandSelectAsListFrom("maschine"); //Auslesen aller Maschine für das Dropdown zum Auswählen einer Simulationsmaschine
             int x = 0;
-            while (x < Maschienen.Count)
+            while (x < Maschine.Count)
             {
-                cb_maschinen.Items.Add(Maschienen[x][1]);
+                cb_maschinen.Items.Add(Maschine[x][1]); //Maschine dem Dropdown hinzufügen
                 x++;
             }
         }
@@ -38,6 +39,13 @@ namespace PL_TS
         {
             btn_changeIbutton.IsEnabled = false;
             UpdateiButton();
+            benutzteMaschine = data.CommandSelectAsListFrom("zuweisung, maschine, log, ibutton", "WHERE ibutton.iButtonID = zuweisung.iButtonID AND log.iButtonID = ibutton.iButtonID AND log.MaschinenID = maschine.MaschinenID AND maschine.MaschinenID = zuweisung.MaschinenID AND zuweisung.iButtonID = '"+ lbl_iButton.Content + "' AND Endtime IS NULL");
+            int x = 0;
+            while (x < benutzteMaschine.Count)
+            {
+                cb_endSim.Items.Add(benutzteMaschine[x][4]);
+                x++;
+            }
         }
 
         string COM;
@@ -85,16 +93,25 @@ namespace PL_TS
             List<string[]> check = new List<string[]>();
             string Button;
             Button= lbl_iButton.Content.ToString();
-            string test= "WHERE maschine.MaschinenID = zuweisung.MaschinenID AND zuweisung.iButtonID = '"+Button.Split(';')[0]+"' AND Bezeichnung = '"+cb_maschinen.Text+"' AND maschine.MaschinenID = '"+Button.Split(';')[1]+"'";
+            string test= "SELECT * FROM zuweisung, maschine WHERE maschine.MaschinenID = zuweisung.MaschinenID AND zuweisung.iButtonID = 'FF30E419006C4100' AND Bezeichnung = 'Drehbank' AND maschine.MaschinenID = 'pl3drb'";
             check =data.CommandSelectAsListFrom("zuweisung, maschine", "WHERE maschine.MaschinenID = zuweisung.MaschinenID AND zuweisung.iButtonID = '"+Button.Split(';')[0]+"' AND Bezeichnung = '"+cb_maschinen.Text+"' AND maschine.MaschinenID = '"+Button.Split(';')[1]+"'");
             if (check.Count >= 1)
             {
-                MessageBox.Show("Sie sind für die Maschine berechtigt.","Berechtigt",MessageBoxButton.OK,MessageBoxImage.Information);
+                data.CommandInsertInto("log", "iButtonID, MaschinenID, Starttime, Endtime", "'" + lbl_iButton.Content + "','" + Button.Split(';')[1] + "',CURRENT_TIMESTAMP,NUll");
+                MessageBox.Show("Die Simulation der Maschine startet.","Start der Simulation",MessageBoxButton.OK,MessageBoxImage.Information);
             }
             if (check.Count == 0)
             {
                 MessageBox.Show("Sie sind für die Maschiene nicht berechtigt!","Nicht Berechtigt",MessageBoxButton.OK,MessageBoxImage.Error);
             }
+        }
+
+        private void Btn_end_Click(object sender, RoutedEventArgs e)
+        {
+            List<string[]> MaschinenID = new List<string[]>();
+            MaschinenID = data.CommandSelectAsListFrom("maschine", "WHERE Bezeichnung='" + cb_endSim.Text + "'");
+            data.CommandUpdate("log", "Endtime= CURRENT_TIMESTAMP", "iButtonID='" + lbl_iButton.Content + "' AND MaschinenID='" + MaschinenID[0][0] + "' AND Endtime IS NULL");
+            MessageBox.Show("Die Simulation der Maschine endet.", "Ende der Simulation", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
