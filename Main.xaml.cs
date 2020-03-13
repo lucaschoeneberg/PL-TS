@@ -58,10 +58,18 @@ namespace PL_TS
             return true;
         }
 
+        public bool dg_log_update()//Anzeigen der Tablle unter dem Reiter Maschinen
+        {
+            string sql = "SELECT * FROM projektlabor.log as log, projektlabor.user as user, projektlabor.maschine as ma WHERE user.iButtonID=log.iButtonID AND ma.MaschinenID=log.MaschinenID";
+            dg_log.DataContext = data.CommandSelectAsDataSet(sql, "LoadDataBinding");
+            return true;
+        }
+
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             dg_maker_update(); // DataGrid Maker Update
             dg_maschine_update(); // DataGrid Maschinen Update
+            dg_log_update();
         }
 
         private void dg_maschine_Loaded(object sender, RoutedEventArgs e)
@@ -75,13 +83,21 @@ namespace PL_TS
             add_Maker add_MakerOpen = new add_Maker();
             ApplyEffect(this);
             add_MakerOpen.ShowDialog();//Öffen der Form zum Hinzufügen eines Makers
+            dg_maker_update(); // DataGrid Maker Update
+            dg_maschine_update(); // DataGrid Maschinen Update
+            dg_log_update();
             ClearEffect(this);
         }
 
         private void btn_add_maschine_Click(object sender, RoutedEventArgs e)
         {
             addMaschine addMaschineOpen = new addMaschine();
+            ApplyEffect(this);
             addMaschineOpen.ShowDialog();//Öffen der Form zum Hinzufügen einer Maschine
+            ClearEffect(this);
+            dg_maker_update(); // DataGrid Maker Update
+            dg_maschine_update(); // DataGrid Maschinen Update
+            dg_log_update();
         }
 
         private void btn_test_maschine_Click(object sender, RoutedEventArgs e)
@@ -91,6 +107,7 @@ namespace PL_TS
             openSimulation.ShowDialog();//Öffen der Simulation für die Maschinen
             dg_maker_update(); // DataGrid Maker Update
             dg_maschine_update(); // DataGrid Maschinen Update
+            dg_log_update();
             ClearEffect(this);
         }
 
@@ -102,6 +119,7 @@ namespace PL_TS
             edit_makerOpen.ShowDialog();//Öffen einer Form zum ändern von Angaben eines Makers
             dg_maker_update(); // DataGrid Maker Update
             dg_maschine_update(); // DataGrid Maschinen Update
+            dg_log_update();
             ClearEffect(this);
         }
 
@@ -116,6 +134,7 @@ namespace PL_TS
             }
             dg_maker_update(); // DataGrid Maker Update // DataGrid Maker Update
             dg_maschine_update(); // DataGrid Maschinen Update
+            dg_log_update();
         }
 
         private void btn_maker_maschine_Click(object sender, RoutedEventArgs e)
@@ -126,6 +145,7 @@ namespace PL_TS
             maschine_makerOpen.ShowDialog(); //Öffen der Form zur Zuweisung der Maschinen
             dg_maker_update(); // DataGrid Maker Update
             dg_maschine_update(); // DataGrid Maschinen Update // DataGrid Maschinen Update
+            dg_log_update();
             ClearEffect(this);
         }
 
@@ -136,12 +156,18 @@ namespace PL_TS
             zuweisen.ShowDialog();
             dg_maker_update(); // DataGrid Maker Update
             dg_maschine_update(); // DataGrid Maschinen Update
+            dg_log_update();
             ClearEffect(this);
         }
 
         private void PL_MAIN_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Application.Current.Shutdown(); //Schließen der kompletten Aplication
+        }
+
+        private void dg_log_Loaded(object sender, RoutedEventArgs e)
+        {
+            dg_log_update();
         }
     }
 }
