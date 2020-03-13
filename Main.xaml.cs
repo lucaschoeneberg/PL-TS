@@ -69,7 +69,7 @@ namespace PL_TS
         {
             dg_maker_update(); // DataGrid Maker Update
             dg_maschine_update(); // DataGrid Maschinen Update
-            dg_log_update();
+            dg_log_update(); // DataGrid Log Update
         }
 
         private void dg_maschine_Loaded(object sender, RoutedEventArgs e)
@@ -85,7 +85,7 @@ namespace PL_TS
             add_MakerOpen.ShowDialog();//Öffen der Form zum Hinzufügen eines Makers
             dg_maker_update(); // DataGrid Maker Update
             dg_maschine_update(); // DataGrid Maschinen Update
-            dg_log_update();
+            dg_log_update(); // DataGrid Log Update
             ClearEffect(this);
         }
 
@@ -97,7 +97,7 @@ namespace PL_TS
             ClearEffect(this);
             dg_maker_update(); // DataGrid Maker Update
             dg_maschine_update(); // DataGrid Maschinen Update
-            dg_log_update();
+            dg_log_update(); // DataGrid Log Update
         }
 
         private void btn_test_maschine_Click(object sender, RoutedEventArgs e)
@@ -107,7 +107,7 @@ namespace PL_TS
             openSimulation.ShowDialog();//Öffen der Simulation für die Maschinen
             dg_maker_update(); // DataGrid Maker Update
             dg_maschine_update(); // DataGrid Maschinen Update
-            dg_log_update();
+            dg_log_update(); // DataGrid Log Update
             ClearEffect(this);
         }
 
@@ -119,7 +119,7 @@ namespace PL_TS
             edit_makerOpen.ShowDialog();//Öffen einer Form zum ändern von Angaben eines Makers
             dg_maker_update(); // DataGrid Maker Update
             dg_maschine_update(); // DataGrid Maschinen Update
-            dg_log_update();
+            dg_log_update(); // DataGrid Log Update
             ClearEffect(this);
         }
 
@@ -134,7 +134,7 @@ namespace PL_TS
             }
             dg_maker_update(); // DataGrid Maker Update // DataGrid Maker Update
             dg_maschine_update(); // DataGrid Maschinen Update
-            dg_log_update();
+            dg_log_update(); // DataGrid Log Update
         }
 
         private void btn_maker_maschine_Click(object sender, RoutedEventArgs e)
@@ -145,7 +145,7 @@ namespace PL_TS
             maschine_makerOpen.ShowDialog(); //Öffen der Form zur Zuweisung der Maschinen
             dg_maker_update(); // DataGrid Maker Update
             dg_maschine_update(); // DataGrid Maschinen Update // DataGrid Maschinen Update
-            dg_log_update();
+            dg_log_update(); // DataGrid Log Update
             ClearEffect(this);
         }
 
@@ -156,7 +156,7 @@ namespace PL_TS
             zuweisen.ShowDialog();
             dg_maker_update(); // DataGrid Maker Update
             dg_maschine_update(); // DataGrid Maschinen Update
-            dg_log_update();
+            dg_log_update(); // DataGrid Log Update
             ClearEffect(this);
         }
 
@@ -167,7 +167,7 @@ namespace PL_TS
 
         private void dg_log_Loaded(object sender, RoutedEventArgs e)
         {
-            dg_log_update();
+            dg_log_update(); // DataGrid Log Update
         }
     }
 }
