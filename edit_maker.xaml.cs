@@ -19,20 +19,21 @@ namespace PL_TS
         string password;
         List<string[]> Userdata = new List<string[]>();
         string _makerID;
+        string COM;
         public edit_maker(string makerID)
         {
             InitializeComponent();
             _makerID = makerID;
-            Userdata = data.CommandSelectAsListFrom("user", "WHERE UserID='" + makerID + "'");
-            tbx_Vorname.Text = Userdata[0][1];
-            tbx_Nachname.Text = Userdata[0][2];
-            tbx_EMail.Text = Userdata[0][3];
-            lbl_readiButton.Content = Userdata[0][7];
-            if (Userdata[0][4] == "True")
+            Userdata = data.CommandSelectAsListFrom("user", "WHERE UserID='" + makerID + "'"); //Suchen der Daten des ausgewählten Makers
+            tbx_Vorname.Text = Userdata[0][1]; //Füllen der Daten mit Informationen
+            tbx_Nachname.Text = Userdata[0][2];//Füllen der Daten mit Informationen
+            tbx_EMail.Text = Userdata[0][3];//Füllen der Daten mit Informationen
+            lbl_readiButton.Content = Userdata[0][7];//Füllen der Daten mit Informationen
+            if (Userdata[0][4] == "True") //Keymember
             {
                 chb_Keymember.IsChecked = true;
             }
-            else
+            else //Kein Keymember
             {
                 chb_Keymember.IsChecked = false;
             }
@@ -57,8 +58,6 @@ namespace PL_TS
             btn_changeIbutton.IsEnabled = false;
             UpdateiButton();
         }
-
-        string COM;
         private void UpdateiButton_Thread()
         {
             string IButton;
@@ -123,7 +122,7 @@ namespace PL_TS
 
         private void Chb_Keymember_Checked(object sender, RoutedEventArgs e)
         {
-            if (chb_Keymember.IsChecked == true)
+            if (chb_Keymember.IsChecked == true) //Eingaben des Keymembers sichtbar
             {
                 tbx_Benutzername.Visibility = Visibility.Visible;
                 tbx_password.Visibility = Visibility.Visible;
@@ -136,7 +135,7 @@ namespace PL_TS
 
         private void Chb_Keymember_Unchecked(object sender, RoutedEventArgs e)
         {
-            if (chb_Keymember.IsChecked == false)
+            if (chb_Keymember.IsChecked == false)//Eingaben des Keymembers nicht sichtbar
             {
                 tbx_Benutzername.Visibility = Visibility.Hidden;
                 tbx_password.Visibility = Visibility.Hidden;
