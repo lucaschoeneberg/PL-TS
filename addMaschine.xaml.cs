@@ -28,9 +28,9 @@ namespace PL_TS
 
         private void Add_Maschine_Click(object sender, RoutedEventArgs e)
         {
-            if (tbx_MaschinenID.Text != "" && tbx_Bezeichnung.Text != "")
+            if (tbx_MaschinenID.Text != "" && tbx_Bezeichnung.Text != "")//Beide Felder müssen Ausgefüllt sein
             {
-                data.CommandInsertInto("maschine", "MaschinenID, Bezeichnung", "'" + tbx_MaschinenID.Text + "','" + tbx_Bezeichnung.Text + "'");
+                data.CommandInsertInto("maschine", "MaschinenID, Bezeichnung", "'" + tbx_MaschinenID.Text + "','" + tbx_Bezeichnung.Text + "'"); //Einfügen einer Maschine
             }
             else
             {
