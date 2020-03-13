@@ -56,6 +56,8 @@ namespace PL_TS
         }
         private void FillListBox()
         {
+            lBxMaschine.Items.Clear(); // Lehrt die Liste lBxMaschine
+            lBxZugewiesen.Items.Clear(); // Lehrt die Liste lBxZugewiesen
             iButtonID = data.CommandSelectAsListFrom("user", "WHERE UserID='" + UserID + "'")[0][7]; //Auslesen der ButtonID des Users
             zugewiesen = data.CommandSelectAsListFrom("zuweisung, maschine", "WHERE maschine.MaschinenID=zuweisung.MaschinenID AND IButtonID='" + iButtonID + "'"); //Zugewiesene Maschinen des Users
             int x = 0;
