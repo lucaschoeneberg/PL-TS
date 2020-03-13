@@ -22,7 +22,8 @@
         <Label x:Name="lbl_Benutzername" Content="Benutzername" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,99,0,0" Visibility="Hidden"/>
         <Label x:Name="lbl_Passwort" Content="Passwort" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="151,101,0,0" Visibility="Hidden"/>
         <Label x:Name="lbl_Passwort_verify" Content="Passwort wiederholen" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="276,99,0,0" Visibility="Hidden"/>
-        <Label x:Name="lbl_iButton" Content="iButton auslesen..." HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" Width="210"/>
+        <Label x:Name="lbl_iButton_Text" Content="iButton auslesen..." HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Width="210"/>
+        <TextBox x:Name="tbx_iButton" Text="" HorizontalAlignment="Left" Margin="10,264,0,0" VerticalAlignment="Top" Width="210" IsEnabled="False" TextChanged="tbx_iButton_TextChanged"/>
         <ComboBox x:Name="cbx_com" SelectionChanged="cbx_com_Changed" Loaded="cbx_com_Loaded" HorizontalAlignment="Left" Margin="121,229,0,0" VerticalAlignment="Top" Width="99" Height="32" DropDownOpened="cbx_com_DropDownOpened"/>
         <Button x:Name="btn_changeIbutton" Click="btn_changeIbutton_Click" Content="Change" HorizontalAlignment="Left" Margin="10,229,0,0" VerticalAlignment="Top" Width="106" IsEnabled="False" />
     </Grid>
